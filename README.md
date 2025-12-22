@@ -2,7 +2,7 @@
 
 Minimal Quarto-based portfolio site ready for project documentation as they're completed.
 
-**Live Site:** [yourusername.github.io/noor-rashid-portfolio](https://yourusername.github.io/noor-rashid-portfolio) *(after deployment)*
+**Live Site:** [noor-rashid.github.io/noor-rashid-portfolio](https://yourusername.github.io/noor-rashid-portfolio) *(after deployment)*
 
 ---
 
