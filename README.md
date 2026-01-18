@@ -2,9 +2,9 @@
 
 I'm a data scientist building production ML systems from first principles. This portfolio documents my journey from implementing foundational algorithms in NumPy to deploying scalable systems in the wild.
 
-Right now I'm working through collaborative filtering and recommendation systems, starting with matrix factorisation using Alternating Least Squares. The goal isn't just to use libraries—it's to understand the mathematics deeply enough to make informed engineering decisions when these systems hit production.
+Right now I'm working through collaborative filtering and recommendation systems, starting with matrix factorisation using Alternating Least Squares. The goal isn't just to use libraries but to understand the mathematics deeply enough to make informed engineering decisions when these systems hit production.
 
-Each project here connects theory to practice. I write the maths by hand, implement it in code, then scale it up with proper software engineering. You'll find full documentation, working code, and honest reflections on what worked and what didn't.
+Each project here connects theory to practice. I write the maths by hand, implement it in code, then scale it up with proper software engineering. You'll find full documentation, working code, and honest reflections on the real struggles, on what worked well and what didn't work so well. 
 
 ## Projects
 
