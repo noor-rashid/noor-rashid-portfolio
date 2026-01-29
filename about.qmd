@@ -2,13 +2,13 @@
 title: "About"
 ---
 
-I'm a Senior Data Scientist at the Wine & Spirit Education Trust, promoted from Data Analyst within eight months of joining. My work focuses on building ML systems that create measurable commercial impact.
+I'm a Senior Data Scientist at a leading drinks company, promoted from Data Analyst within eight months of joining. My work focuses on building ML systems that create measurable commercial impact.
 
-Before transitioning to data science, I spent eight years as a Senior Instructional Designer at SPSP (Saudi Aramco), designing curriculum for over 100,000 students. That background shapes how I approach learning and documentation: systematically, with clear explanations and concrete examples before abstract theory.
+Before transitioning to data science, I spent eight years as a Senior Instructional Designer at a Saudi Aramco company, designing curriculum for over 100,000 students. That background shapes how I approach learning and documentation, that is, systematically, with clear explanations and concrete examples before abstract theory.
 
 ## What I've Built
 
-At WSET, I've delivered two significant systems. The first is an automated A/B testing platform that has generated high six figure revenue by enabling faster experimentation cycles. The second is an agentic RAG system with purchase based recommendations, built using Redis for caching and Pinecone for vector search.
+At my current employment, I've delivered two significant systems. The first is an automated A/B testing platform that has generated high six figure revenue by enabling faster experimentation cycles. The second is an agentic RAG system with purchase based recommendations, built using Redis for caching and Pinecone for vector search.
 
 ## Technical Focus
 
@@ -18,7 +18,7 @@ I work primarily in Python, with experience across PyTorch, scikit-learn, SQL, D
 
 ## Education
 
-**University of Oxford**
+**University of Oxford, B.A. English Literature and Language, 2.1**
 
 ## What I'm Looking For
 
