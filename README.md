@@ -1,8 +1,8 @@
 # Noor Rashid
 
-I build production ML systems from first principles. Oxford educated, currently working as a Senior Data Scientist at WSET where I've delivered an automated A/B testing platform generating high six figure revenue and an agentic RAG system using Redis and Pinecone.
+I build production ML systems from first principles. Oxford educated, currently working as a Senior Data Scientist at for a drinks company working on some really exciting data science and ML challenges. For instance, computing CLV in a non subscription context, demand forecasting, automated fast API pipelines and much more. 
 
-This portfolio documents how I learn: by implementing algorithms from scratch, understanding the maths deeply enough to make informed engineering decisions when systems need to scale.
+This portfolio documents how I learn which is by implementing algorithms from scratch, understanding the maths deeply enough to make informed engineering decisions when systems need to scale.
 
 ## Current Project
 
@@ -12,7 +12,7 @@ Implementing collaborative filtering with ALS on MovieLens 100K. Not using libra
 
 ## Technical Stack
 
-Python, PyTorch, scikit-learn, SQL, Docker, FastAPI, Redis, Pinecone, AWS
+Python, PyTorch, scikit-learn, SQL, Docker, FastAPI, Redis, Pinecone, Azure
 
 ## Contact
 
