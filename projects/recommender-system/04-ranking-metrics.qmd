@@ -1,0 +1,150 @@
+---
+title: "Ranking Metrics"
+subtitle: "Hit rate, NDCG, and why position matters"
+date: "2025-01-22"
+---
+
+RMSE measures how accurately we predict individual ratings. But users do not see individual predictions. They see a ranked list: ten films Netflix thinks you will like, twenty products Amazon suggests you buy. What matters is whether the good items appear near the top.
+
+Ranking metrics capture this. Instead of asking "how close was the predicted rating to the actual rating", they ask "did the relevant items appear in the top K positions".
+
+## Generating Recommendations
+
+Before we can evaluate rankings, we need to generate them. For each user, we compute predicted scores for all items, exclude items they have already interacted with, and take the top K.
+
+```python
+def predict_all_for_user(u_idx, U, V):
+    """
+    Predict ratings for all items for a given user.
+    """
+    return U[u_idx] @ V.T
+
+
+def get_top_n_recommendations(u_idx, U, V, mask_train, n=10):
+    """
+    Get top N recommendations for a user, excluding already rated items.
+    """
+    scores = U[u_idx] @ V.T
+    
+    already_rated = mask_train[u_idx] > 0
+    scores[already_rated] = -np.inf
+    
+    return np.argsort(scores)[::-1][:n]
+```
+
+The `argsort` call returns indices that would sort the array in ascending order. We reverse it with `[::-1]` to get descending order, then take the first n.
+
+## Hit Rate
+
+Hit rate at K asks a simple question: did any of the top K recommendations appear in the user's test set?
+
+```python
+def hit_rate_at_k(U, V, mask_train, mask_test, k=10):
+    """
+    Compute hit rate at K.
+    
+    Hit rate = fraction of users with at least one relevant item in top K.
+    """
+    n_users = U.shape[0]
+    hits = 0
+    
+    for u_idx in range(n_users):
+        top_k = get_top_n_recommendations(u_idx, U, V, mask_train, n=k)
+        
+        test_items = np.where(mask_test[u_idx] > 0)[0]
+        
+        if len(np.intersect1d(top_k, test_items)) > 0:
+            hits += 1
+    
+    return hits / n_users
+```
+
+A hit rate of 0.65 at K equals 10 means that 65% of users got at least one item they actually interacted with in their top 10 recommendations. Compare this to random selection. If you picked 10 items uniformly at random from 1682, your chance of hitting one of the roughly 20 test items is around 10%. The model is doing much better than random.
+
+## NDCG
+
+Hit rate treats all positions equally. A relevant item at position 1 counts the same as one at position 10. NDCG (Normalised Discounted Cumulative Gain) fixes this by giving more credit to relevant items that appear earlier.
+
+The idea is that positions are discounted logarithmically. Position 1 gets full credit. Position 2 gets credit divided by log base 2 of 3. Position 10 gets credit divided by log base 2 of 11.
+
+```python
+def dcg_at_k(ranked_items, relevant_items, k):
+    """
+    Compute Discounted Cumulative Gain at K.
+    """
+    dcg = 0.0
+    for i, item in enumerate(ranked_items[:k]):
+        if item in relevant_items:
+            dcg += 1.0 / np.log2(i + 2)
+    return dcg
+
+
+def ndcg_at_k(U, V, mask_train, mask_test, R_test, k=10):
+    """
+    Compute NDCG at K averaged across all users.
+    """
+    n_users = U.shape[0]
+    ndcg_scores = []
+    
+    for u_idx in range(n_users):
+        relevant_items = set(np.where(
+            (mask_test[u_idx] > 0) & (R_test[u_idx] >= 4)
+        )[0])
+        
+        if len(relevant_items) == 0:
+            continue
+        
+        top_k = get_top_n_recommendations(u_idx, U, V, mask_train, n=k)
+        
+        dcg = dcg_at_k(top_k, relevant_items, k)
+        
+        ideal_dcg = dcg_at_k(list(relevant_items), relevant_items, k)
+        
+        if ideal_dcg > 0:
+            ndcg_scores.append(dcg / ideal_dcg)
+    
+    return np.mean(ndcg_scores)
+```
+
+Notice the threshold of 4. With explicit ratings, we define "relevant" as items the user rated 4 or higher. They did not just interact with these items; they liked them.
+
+NDCG equals 1 means perfect ranking: all relevant items at the very top, in the right order. NDCG equals 0 means no relevant items in the top K.
+
+## Results
+
+Training with the optimal lambda of 10 and evaluating both metrics:
+
+```python
+U, V, _ = train_als(
+    R_train, mask_train,
+    k=10,
+    lambda_reg=10.0,
+    n_epochs=20,
+    verbose=False
+)
+
+for k in [5, 10, 20]:
+    hr = hit_rate_at_k(U, V, mask_train, mask_test, k=k)
+    ndcg = ndcg_at_k(U, V, mask_train, mask_test, R_test, k=k)
+    print(f"K={k:2d} | Hit Rate: {hr:.4f} | NDCG: {ndcg:.4f}")
+```
+
+| K | Hit Rate | NDCG |
+|---|----------|------|
+| 5 | 0.49 | 0.18 |
+| 10 | 0.65 | 0.18 |
+| 20 | 0.77 | 0.20 |
+
+Hit rate increases with K because you have more slots to place a relevant item. NDCG is relatively flat, suggesting relevant items are scattered throughout the list rather than concentrated at the top.
+
+An NDCG of 0.18 is modest. The model finds relevant items but does not consistently place them in positions 1 or 2. There is room for improvement, which is what more sophisticated models try to achieve.
+
+## When to Use Which
+
+Hit rate is intuitive and easy to explain. It answers "will users find something they like in the recommendations". NDCG is more sensitive to ranking quality and penalises models that bury good items.
+
+For implicit feedback where you only know "interacted or not", hit rate is often more appropriate because relevance is binary. For explicit feedback with graded relevance, NDCG captures more information.
+
+In practice, you track both.
+
+[Next: Implicit Feedback →](05-implicit-feedback.qmd)

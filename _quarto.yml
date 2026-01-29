@@ -4,17 +4,20 @@ project:
 
 website:
   title: "Noor Rashid"
-  description: "Machine Learning Engineer & Data Scientist Portfolio"
+  description: "Machine Learning Engineer & Data Scientist"
   favicon: assets/favicon.png
   
   navbar:
     background: light
-    logo: assets/logo.png
     left:
       - text: "Home"
         href: index.qmd
       - text: "About"
         href: about.qmd
+      - text: "Projects"
+        menu: 
+          - text: "Recommender System"
+            href: projects/recommender-system/index.qmd
     right:
       - icon: github
         href: https://github.com/noor-rashid
@@ -24,7 +27,7 @@ website:
         href: mailto:nooraaden@gmail.com
 
   page-footer:
-    center: "© 2024 Noor Rashid. Built with [Quarto](https://quarto.org)"
+    center: "© 2025 Noor Rashid. Built with [Quarto](https://quarto.org)"
 
 format:
   html:
@@ -38,8 +41,7 @@ format:
     code-tools: true
     code-copy: true
     link-external-newwindow: true
-    link-external-icon: true
-    
+
 execute:
   freeze: auto
   cache: true

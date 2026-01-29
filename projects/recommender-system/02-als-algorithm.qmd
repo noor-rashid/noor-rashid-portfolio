@@ -1,0 +1,123 @@
+---
+title: "The ALS Algorithm"
+subtitle: "Ridge regression in disguise"
+date: "2025-01-20"
+---
+
+Matrix factorisation wants to find two matrices U and V such that their product approximates the observed ratings. The objective is to minimise the squared error between predicted and actual ratings, plus a regularisation term to prevent overfitting.
+
+The problem is that this objective is non convex. U and V interact multiplicatively. If you scale U up by 2 and scale V down by 2, the product stays the same. This creates a landscape full of saddle points and equivalent solutions.
+
+Alternating Least Squares solves this elegantly by fixing one matrix and optimising the other.
+
+## The Loss Function
+
+The loss we minimise has two parts. The reconstruction loss measures how well our predictions match observed ratings. The regularisation loss penalises large values in U and V.
+
+```python
+def compute_loss(R, U, V, mask, lambda_reg):
+    """
+    Compute ALS loss: squared error on observed + L2 regularisation.
+    """
+    R_pred = U @ V.T
+    
+    errors = (R - R_pred) ** 2
+    reconstruction_loss = (mask * errors).sum()
+    
+    reg_loss = lambda_reg * (np.sum(U ** 2) + np.sum(V ** 2))
+    
+    return reconstruction_loss + reg_loss
+```
+
+The mask is crucial. We only compute errors on entries where we have actual ratings. The zeros in R do not mean "user hated this film". They mean "user has not seen this film". We should not try to predict zero for unseen films.
+
+## Why Fixing One Matrix Works
+
+When V is fixed, the loss function becomes quadratic in U. Each user's embedding can be optimised independently. The solution for user u is a ridge regression problem.
+
+Consider what we are trying to do for user u. We want to find a k dimensional vector that, when dotted with the item vectors for films this user has rated, gives predictions close to their actual ratings.
+
+If user u rated items 3, 17, and 42, we take the corresponding rows from V. Call this subset V_rated. The user's observed ratings for those items form a vector r_u. We want to find u_u such that V_rated times u_u is close to r_u.
+
+This is exactly least squares. With regularisation, it becomes ridge regression. The closed form solution is:
+
+```python
+def update_user(u_idx, R_train, V, mask_train, lambda_reg):
+    """
+    Update single user embedding using closed form solution.
+    """
+    rated_mask = mask_train[u_idx] > 0
+    
+    V_rated = V[rated_mask]
+    r_u = R_train[u_idx, rated_mask]
+    
+    k = V.shape[1]
+    A = V_rated.T @ V_rated + lambda_reg * np.eye(k)
+    b = V_rated.T @ r_u
+    
+    return np.linalg.solve(A, b)
+```
+
+The term `lambda_reg * np.eye(k)` is the regularisation. It adds a small value to the diagonal of the matrix we invert. This does two things. First, it shrinks the solution towards zero, preventing overfitting. Second, it guarantees the matrix is invertible even if V_rated does not have full rank.
+
+## The Item Update
+
+The item update is symmetric. When U is fixed, each item embedding can be optimised independently by looking at which users rated that item.
+
+```python
+def update_item(i_idx, R_train, U, mask_train, lambda_reg):
+    """
+    Update single item embedding using closed form solution.
+    """
+    rated_mask = mask_train[:, i_idx] > 0
+    
+    U_rated = U[rated_mask]
+    r_i = R_train[rated_mask, i_idx]
+    
+    k = U.shape[1]
+    A = U_rated.T @ U_rated + lambda_reg * np.eye(k)
+    b = U_rated.T @ r_i
+    
+    return np.linalg.solve(A, b)
+```
+
+## Initialisation
+
+Before we can start alternating, we need initial values for U and V. Random initialisation works, but the scale matters. Large values cause exploding gradients in the first iterations. Zeros give no signal to learn from.
+
+Small random values centred at zero are standard.
+
+```python
+k = 10
+lambda_reg = 0.1
+
+np.random.seed(42)
+U = np.random.normal(0, 0.1, size=(n_users, k))
+V = np.random.normal(0, 0.1, size=(n_items, k))
+```
+
+## Verifying It Works
+
+A simple sanity check is to update one user and verify the loss decreases.
+
+```python
+initial_loss = compute_loss(R_train, U, V, mask_train, lambda_reg)
+
+U[0] = update_user(0, R_train, V, mask_train, lambda_reg)
+
+loss_after = compute_loss(R_train, U, V, mask_train, lambda_reg)
+
+print(f"Loss before: {initial_loss:,.0f}")
+print(f"Loss after:  {loss_after:,.0f}")
+print(f"Decreased:   {loss_after < initial_loss}")
+```
+
+If the loss decreased, the maths is correct. Each individual update is guaranteed to reduce or maintain the loss because we are finding the optimal solution for that user given fixed items.
+
+## The Insight
+
+ALS is ridge regression in disguise. By fixing one set of factors, the non convex joint optimisation becomes a series of convex subproblems. Each subproblem has a closed form solution. No learning rates, no momentum, no gradient clipping.
+
+This elegance has practical implications. ALS is embarrassingly parallel. Each user update is independent of the others. Each item update is independent of the others. On a cluster, you can update all users simultaneously, then all items simultaneously.
+
+[Next: Training and Evaluation →](03-training-evaluation.qmd)

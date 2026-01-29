@@ -1,0 +1,153 @@
+---
+title: "Optimisation and Tuning"
+subtitle: "The matrix inversion trick and computational efficiency"
+date: "2025-01-24"
+---
+
+The naive implementation of implicit ALS has a problem. For each user update, we compute V transpose times C_u times V, which involves a dense diagonal matrix of size (items, items). With 1682 items, that is manageable. With millions of items, it becomes prohibitive.
+
+## The Computational Trick
+
+The key insight is that we can precompute V transpose times V once per epoch, then apply a correction for each user.
+
+The correction comes from recognising that C_u is close to the identity. Most entries are 1 (non interactions have confidence 1). Only the items the user interacted with have confidence greater than 1.
+
+```python
+def train_als_optimised(P, C, k, lambda_reg, n_epochs, verbose=True):
+    n_users, n_items = P.shape
+    
+    np.random.seed(42)
+    U = np.random.normal(0, 0.1, (n_users, k))
+    V = np.random.normal(0, 0.1, (n_items, k))
+    
+    loss_history = []
+    
+    for epoch in range(n_epochs):
+        VtV = V.T @ V
+        
+        for u_idx in range(n_users):
+            p_u = P[u_idx]
+            c_u = C[u_idx]
+            
+            interacted = np.where(p_u > 0)[0]
+            delta_c = c_u[interacted] - 1
+            
+            V_int = V[interacted]
+            correction = V_int.T @ (delta_c[:, np.newaxis] * V_int)
+            
+            A = VtV + correction + lambda_reg * np.eye(k)
+            b = V.T @ (c_u * p_u)
+            
+            U[u_idx] = np.linalg.solve(A, b)
+        
+        UtU = U.T @ U
+        
+        for i_idx in range(n_items):
+            p_i = P[:, i_idx]
+            c_i = C[:, i_idx]
+            
+            interacted = np.where(p_i > 0)[0]
+            delta_c = c_i[interacted] - 1
+            
+            U_int = U[interacted]
+            correction = U_int.T @ (delta_c[:, np.newaxis] * U_int)
+            
+            A = UtU + correction + lambda_reg * np.eye(k)
+            b = U.T @ (c_i * p_i)
+            
+            V[i_idx] = np.linalg.solve(A, b)
+        
+        loss = compute_implicit_loss(P, C, U, V, lambda_reg)
+        loss_history.append(loss)
+        
+        if verbose:
+            print(f"Epoch {epoch+1:2d} | Loss: {loss:,.0f}")
+    
+    return U, V, loss_history
+```
+
+The complexity drops from O(items squared) per user to O(interactions squared) per user. Since interactions are sparse, this is a major improvement.
+
+## What Makes a Good k
+
+The latent dimension k controls model capacity. Too small and the model cannot capture the complexity of user preferences. Too large and it overfits.
+
+For MovieLens 100K, k between 10 and 50 works well. Larger datasets can support larger k. The rule of thumb is that k should be much smaller than both the number of users and the number of items.
+
+```python
+for k_val in [5, 10, 20, 50, 100]:
+    U, V, _ = train_als(
+        R_train, mask_train,
+        k=k_val,
+        lambda_reg=10.0,
+        n_epochs=20,
+        verbose=False
+    )
+    test_rmse = compute_rmse(R_test, U, V, mask_test)
+    print(f"k={k_val:3d} | Test RMSE: {test_rmse:.4f}")
+```
+
+On MovieLens, test RMSE improves from k equals 5 to k equals 20, then plateaus or slightly degrades beyond k equals 50. The sweet spot depends on the dataset and available regularisation.
+
+## Convergence Criteria
+
+Running a fixed number of epochs is simple but wasteful. The loss curve flattens long before 20 epochs. A smarter approach is to stop when improvement falls below a threshold.
+
+```python
+def train_als_early_stop(R_train, mask_train, k, lambda_reg, max_epochs, tol=1e-4):
+    n_users, n_items = R_train.shape
+    
+    np.random.seed(42)
+    U = np.random.normal(0, 0.1, (n_users, k))
+    V = np.random.normal(0, 0.1, (n_items, k))
+    
+    prev_loss = float('inf')
+    
+    for epoch in range(max_epochs):
+        for u_idx in range(n_users):
+            U[u_idx] = update_user(u_idx, R_train, V, mask_train, lambda_reg)
+        
+        for i_idx in range(n_items):
+            V[i_idx] = update_item(i_idx, R_train, U, mask_train, lambda_reg)
+        
+        loss = compute_loss(R_train, U, V, mask_train, lambda_reg)
+        
+        relative_improvement = (prev_loss - loss) / prev_loss
+        
+        if relative_improvement < tol:
+            print(f"Converged at epoch {epoch+1}")
+            break
+        
+        prev_loss = loss
+    
+    return U, V
+```
+
+## Summary of Hyperparameters
+
+| Parameter | Explicit ALS | Implicit ALS | Notes |
+|-----------|--------------|--------------|-------|
+| k | 10 to 50 | 10 to 50 | Start small, increase if underfitting |
+| lambda | 1 to 100 | 0.01 to 1 | Tune on validation set |
+| alpha | N/A | 1 to 200 | Dataset dependent |
+| epochs | 10 to 30 | 10 to 30 | Use early stopping |
+
+The implicit model typically needs weaker regularisation than explicit because the confidence weighting already provides some smoothing.
+
+## What I Learned
+
+Building ALS from scratch clarified several things that library documentation glosses over.
+
+First, the algorithm is ridge regression in disguise. Once you see it, the update equations are obvious. This demystifies what seemed like complicated linear algebra.
+
+Second, implicit feedback requires thinking about what the absence of data means. The confidence weighting is not a hack; it is a principled way to handle ambiguous negatives.
+
+Third, computational tricks matter at scale. The naive implementation is fine for MovieLens but would not work on production data. The precompute plus correction approach is what real systems use.
+
+Fourth, hyperparameters interact. You cannot tune k independently of lambda. A larger model needs stronger regularisation. The optimal alpha depends on how your implicit signals were generated.
+
+## Next Steps
+
+The ALS implementation is complete. The natural extensions are SGD based matrix factorisation, which trades closed form solutions for better scalability, and neural collaborative filtering, which replaces the dot product with a learned function.
+
+But the foundation is here. Understanding ALS deeply makes the more complex methods easier to grasp because they are all variations on the same theme: learn low dimensional representations that predict interactions.

@@ -1,0 +1,124 @@
+---
+title: "Data and Foundations"
+subtitle: "Understanding sparsity and the rating matrix"
+date: "2025-01-19"
+---
+
+The first step in building any recommender system is understanding the data structure you are working with. MovieLens 100K contains 100,000 ratings from 943 users across 1,682 films. Each rating is a number from 1 to 5, representing how much a user liked a particular film.
+
+## Loading the Data
+
+The dataset comes as a tab separated file with four columns: user ID, item ID, rating, and timestamp. Loading it into pandas is straightforward.
+
+```python
+import pandas as pd
+import numpy as np
+
+data_path = 'ml-100k/u.data'
+df = pd.read_csv(
+    data_path, 
+    sep="\t", 
+    names=["user_id", "item_id", "rating", "timestamp"]
+)
+
+n_users = df.user_id.nunique()
+n_items = df.item_id.nunique()
+n_ratings = len(df)
+
+print(f"Users: {n_users}")
+print(f"Items: {n_items}")
+print(f"Ratings: {n_ratings}")
+```
+
+This gives us 943 users, 1,682 items, and 100,000 ratings. But the interesting number is what we do not have.
+
+## Sparsity
+
+If every user rated every film, we would have 943 times 1,682 ratings, which is about 1.58 million. We have 100,000. That means 93.7% of the matrix is empty.
+
+```python
+sparsity = 1 - (n_ratings / (n_users * n_items))
+print(f"Sparsity: {sparsity:.1%}")
+```
+
+This sparsity is not a bug. It is reality. No one watches everything. Netflix users interact with a tiny fraction of the catalogue. Amazon shoppers buy an even tinier fraction of available products. The challenge of recommendation is learning patterns from the small set of observed interactions to predict the vast majority of missing ones.
+
+## The Rating Matrix
+
+We represent the data as a matrix R where rows are users and columns are items. Entry R[u,i] is the rating user u gave to item i, or zero if they have not rated it.
+
+```python
+R = np.zeros((n_users, n_items))
+
+for row in df.itertuples():
+    R[row.user_id - 1, row.item_id - 1] = row.rating
+
+print(f"Matrix shape: {R.shape}")
+print(f"Non-zero entries: {(R > 0).sum()}")
+```
+
+We also need a mask matrix that tracks which entries actually contain ratings. This becomes critical for the loss function later. We only want to compute errors on observed ratings, not on the zeros.
+
+```python
+mask = (R > 0).astype(float)
+```
+
+## Why Train Test Splits Are Different
+
+Standard machine learning splits data randomly into train and test sets. This does not work for recommender systems because we need to preserve the user structure.
+
+Consider user 42 who has rated 100 films. If we do a random split, some of those ratings go to train and some go to test. But when we evaluate, we want to simulate the real scenario: given what we know about user 42 from their training ratings, can we predict their held out test ratings?
+
+The correct approach is to split each user's ratings individually. For every user, we take 80% of their ratings for training and hold out 20% for testing.
+
+```python
+from sklearn.model_selection import train_test_split
+
+train_data = []
+test_data = []
+
+for user_id in df.user_id.unique():
+    user_ratings = df[df.user_id == user_id]
+    
+    if len(user_ratings) >= 5:
+        train, test = train_test_split(
+            user_ratings, 
+            test_size=0.2, 
+            random_state=42
+        )
+        train_data.append(train)
+        test_data.append(test)
+    else:
+        train_data.append(user_ratings)
+
+train_df = pd.concat(train_data)
+test_df = pd.concat(test_data)
+
+print(f"Train ratings: {len(train_df)}")
+print(f"Test ratings: {len(test_df)}")
+```
+
+Now we build separate rating matrices for train and test.
+
+```python
+R_train = np.zeros((n_users, n_items))
+for row in train_df.itertuples():
+    R_train[row.user_id - 1, row.item_id - 1] = row.rating
+
+R_test = np.zeros((n_users, n_items))
+for row in test_df.itertuples():
+    R_test[row.user_id - 1, row.item_id - 1] = row.rating
+
+mask_train = (R_train > 0).astype(float)
+mask_test = (R_test > 0).astype(float)
+```
+
+## The Goal
+
+The matrix R is mostly zeros. Matrix factorisation assumes there is a low rank structure hidden in the data. We decompose R into two smaller matrices: U of shape (users, k) and V of shape (items, k), where k is much smaller than either dimension.
+
+The product U times V transpose gives us a dense matrix of predicted ratings. The observed entries in R are training signal. The missing entries are predictions.
+
+This is the foundation. Next we derive the ALS algorithm that learns U and V.
+
+[Next: The ALS Algorithm →](02-als-algorithm.qmd)

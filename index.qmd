@@ -1,51 +1,22 @@
 ---
 title: "Noor Rashid"
 subtitle: "Machine Learning Engineer & Data Scientist"
-title-block-banner: true
 ---
 
-## Welcome
+I build production ML systems from first principles. My approach is to implement algorithms from scratch, understand the mathematics deeply, then make informed engineering decisions when systems need to scale.
 
-I build production-grade machine learning systems that solve real business problems. This portfolio showcases end-to-end ML projects covering the full engineering lifecycle: from problem framing and data pipelines through model development, deployment, and monitoring.
+Currently a Senior Data Scientist at WSET, where I've built an automated A/B testing platform generating high six figure revenue and an agentic RAG system with purchase based recommendations using Redis and Pinecone.
 
-**Core Expertise:** Deep Learning, MLOps, Feature Engineering, Model Deployment, A/B Testing, Cloud Architecture (AWS/GCP)
-
-**Tech Stack:** Python, PyTorch, SQL, Docker, Kubernetes, FastAPI, MLflow, Airflow, Spark
-
----
-
-## Featured Projects
+## Projects
 
 ::: {.project-card}
-### Portfolio Under Construction
+### Building Recommender Systems from Linear Algebra
 
-I'm currently building production-quality ML projects to showcase here. Each project will demonstrate end-to-end capabilities from data engineering through deployment and monitoring.
+Implementing collaborative filtering with ALS on MovieLens 100K. This project covers matrix factorisation from first principles, deriving update equations as ridge regression, and building evaluation metrics including NDCG and hit rate. The goal is not to use library black boxes but to understand what happens under the hood well enough to make production decisions.
 
-**Coming Soon:**
-- Recommendation system with collaborative filtering at scale
-- Time-series forecasting with uncertainty quantification
-- NLP application with fine-tuned transformers
-
-Check back soon or [connect with me](#contact) to discuss my work in progress.
+[Read the full series →](projects/recommender-system/index.qmd)
 :::
 
----
+## Contact
 
-## About
-
-Oxford-educated data scientist transitioning into ML Engineering leadership roles. Passionate about building robust, scalable ML systems and bridging the gap between research and production.
-
-**Currently:** Building expertise in MLOps, distributed training, and real-time inference systems. Developing portfolio projects that demonstrate production-grade engineering practices.
-
-**Open to:** Senior DS, MLE, and Lead roles at FAANG, high-growth startups, and quant firms.
-
----
-
-## Contact {#contact}
-
-I'm open to discussing opportunities, technical collaborations, or connecting with fellow ML practitioners.
-
-**Get in touch:**  
-[GitHub](https://github.com/yourusername) | [LinkedIn](https://linkedin.com/in/yourprofile) | [Email](mailto:your.email@example.com)
-
-*Resume available upon request*
+[nooraaden@gmail.com](mailto:nooraaden@gmail.com) · [LinkedIn](https://linkedin.com/in/rashid-noor-aden) · [GitHub](https://github.com/noor-rashid)

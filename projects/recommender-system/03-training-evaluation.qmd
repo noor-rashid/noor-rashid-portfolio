@@ -1,0 +1,136 @@
+---
+title: "Training and Evaluation"
+subtitle: "Convergence, RMSE, and the global mean baseline"
+date: "2025-01-21"
+---
+
+With the update equations in place, the full training loop is straightforward. One epoch means updating all users, then updating all items. We repeat for a fixed number of epochs and track the loss at each step.
+
+## The Training Loop
+
+```python
+def train_als(R_train, mask_train, k, lambda_reg, n_epochs, verbose=True):
+    """
+    Train ALS model.
+    
+    Returns:
+        U: User factors
+        V: Item factors
+        loss_history: Loss at each epoch
+    """
+    n_users, n_items = R_train.shape
+    
+    np.random.seed(42)
+    U = np.random.normal(0, 0.1, (n_users, k))
+    V = np.random.normal(0, 0.1, (n_items, k))
+    
+    loss_history = []
+    
+    for epoch in range(n_epochs):
+        for u_idx in range(n_users):
+            U[u_idx] = update_user(u_idx, R_train, V, mask_train, lambda_reg)
+        
+        for i_idx in range(n_items):
+            V[i_idx] = update_item(i_idx, R_train, U, mask_train, lambda_reg)
+        
+        loss = compute_loss(R_train, U, V, mask_train, lambda_reg)
+        loss_history.append(loss)
+        
+        if verbose:
+            print(f"Epoch {epoch+1:2d} | Loss: {loss:,.0f}")
+    
+    return U, V, loss_history
+```
+
+Training for 20 epochs gives a characteristic curve. The loss drops sharply in the first few epochs, then flattens as we approach convergence.
+
+```python
+U, V, loss_history = train_als(
+    R_train, mask_train,
+    k=10,
+    lambda_reg=0.1,
+    n_epochs=20
+)
+```
+
+The shape tells us something important. Most of the learning happens early. Those first five epochs take you from random embeddings to something reasonable. The next fifteen epochs refine the solution but deliver diminishing returns. This is why early stopping matters in practice. The compute cost of additional epochs often is not worth the marginal improvement.
+
+## RMSE
+
+Loss is useful for monitoring convergence but it includes regularisation and depends on the scale of your data. RMSE gives a more interpretable number: the average prediction error in rating units.
+
+```python
+def compute_rmse(R, U, V, mask):
+    """
+    Compute RMSE on observed ratings only.
+    """
+    R_pred = U @ V.T
+    errors = (R - R_pred) ** 2
+    mse = (mask * errors).sum() / mask.sum()
+    return np.sqrt(mse)
+
+train_rmse = compute_rmse(R_train, U, V, mask_train)
+test_rmse = compute_rmse(R_test, U, V, mask_test)
+
+print(f"Train RMSE: {train_rmse:.4f}")
+print(f"Test RMSE:  {test_rmse:.4f}")
+```
+
+With lambda set to 0.1, I got a train RMSE of 0.65 and a test RMSE of 1.22. The gap is a red flag. The model is memorising training data rather than learning generalisable patterns.
+
+## The Global Mean Baseline
+
+Is 1.22 good or bad? We need a baseline to compare against. The simplest baseline predicts the global mean rating for every user and every item.
+
+```python
+global_mean = R_train[mask_train > 0].mean()
+print(f"Global mean: {global_mean:.2f}")
+
+baseline_errors = (R_test - global_mean) ** 2
+baseline_rmse = np.sqrt((mask_test * baseline_errors).sum() / mask_test.sum())
+
+print(f"Baseline RMSE: {baseline_rmse:.4f}")
+print(f"ALS RMSE:      {test_rmse:.4f}")
+```
+
+The global mean is about 3.53 and its RMSE on the test set is 1.12. Our ALS model with weak regularisation actually performs worse than predicting the same number for everyone. That is overfitting in action.
+
+## Hyperparameter Tuning
+
+The fix is stronger regularisation. We run a sweep over lambda values and track both train and test RMSE.
+
+```python
+for lam in [0.1, 1.0, 10.0, 50.0, 100.0]:
+    U, V, _ = train_als(
+        R_train, mask_train,
+        k=10,
+        lambda_reg=lam,
+        n_epochs=20,
+        verbose=False
+    )
+    train_rmse = compute_rmse(R_train, U, V, mask_train)
+    test_rmse = compute_rmse(R_test, U, V, mask_test)
+    print(f"λ={lam:5.1f} | Train: {train_rmse:.4f} | Test: {test_rmse:.4f}")
+```
+
+The results show the classic regularisation trade off.
+
+| Lambda | Train RMSE | Test RMSE |
+|--------|------------|-----------|
+| 0.1 | 0.65 | 1.20 |
+| 1.0 | 0.66 | 1.04 |
+| 10.0 | 0.81 | 0.97 |
+| 50.0 | 1.26 | 1.29 |
+| 100.0 | 1.64 | 1.66 |
+
+At lambda equals 0.1, the model fits training data tightly but fails on test. At lambda equals 10, train RMSE is higher but test RMSE is lowest. At lambda equals 100, regularisation is too strong and the model underfits both sets.
+
+The sweet spot is lambda equals 10, giving a test RMSE of 0.97. This beats the global mean baseline by about 0.15 rating points. The model has learned something useful about user preferences.
+
+## What RMSE Means
+
+An RMSE of 0.97 means predictions are off by about one star on average. Ratings range from 1 to 5. The model is not perfect, but it captures meaningful signal.
+
+However, RMSE has a limitation. Users see recommendations as a ranked list, not as individual rating predictions. Whether you predict 4.2 or 4.5 matters less than whether the good films appear before the mediocre ones.
+
+[Next: Ranking Metrics →](04-ranking-metrics.qmd)

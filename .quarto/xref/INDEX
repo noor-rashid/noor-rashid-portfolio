@@ -4,5 +4,8 @@
   },
   "about.qmd": {
     "about.html": "a57d0dda"
+  },
+  "projects/recommender-system/index.qmd": {
+    "index.html": "4eed6d37"
   }
 }

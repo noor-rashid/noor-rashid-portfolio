@@ -1,0 +1,180 @@
+---
+title: "Implicit Feedback"
+subtitle: "Binary preferences and confidence weighting"
+date: "2025-01-23"
+---
+
+Most real world recommendation data is implicit. Netflix knows what you watched, not whether you enjoyed it. Amazon knows what you bought, not whether you would buy it again. Spotify knows what you played, not whether you skipped after ten seconds.
+
+Explicit ratings are rare. Asking users to rate every interaction creates friction. Most people do not bother. The systems that work at scale learn from implicit signals: clicks, views, purchases, time spent.
+
+## The Problem with Implicit Data
+
+With explicit feedback, we know what users liked and what they disliked. A 5 star rating is strong positive signal. A 1 star rating is strong negative signal.
+
+With implicit feedback, we only observe positive interactions. A click tells us the user was interested. But what does no click mean? Did they see the item and ignore it? Did they never see it? Are they saving it for later?
+
+The absence of interaction is ambiguous. It might indicate dislike, but it might just indicate lack of exposure.
+
+## Converting to Binary
+
+The first step is converting our rating matrix to binary preferences. Any rating becomes a 1, indicating interaction. Missing entries remain 0.
+
+```python
+R_implicit = np.zeros((n_users, n_items))
+for row in df.itertuples():
+    R_implicit[row.user_id - 1, row.item_id - 1] = row.rating
+
+P = (R_implicit > 0).astype(float)
+
+print(f"Interactions (P=1): {P.sum():,.0f}")
+print(f"Non-interactions (P=0): {(P == 0).sum():,.0f}")
+```
+
+P is the preference matrix. We are now predicting binary outcomes: did the user interact with this item or not.
+
+## Confidence Weighting
+
+The insight from the seminal paper by Hu, Koren, and Volinsky is to treat all observations, both ones and zeros, but weight them by confidence.
+
+For interactions, confidence increases with the strength of the signal. If the raw data includes counts (user watched this film 5 times), more interactions mean higher confidence that they actually like it.
+
+For non interactions, we have low but nonzero confidence. The user probably did not see the item, but there is still some weak signal that they did not seek it out.
+
+The formula is simple:
+
+```python
+def compute_confidence(R, alpha=40):
+    """
+    Compute confidence matrix.
+    
+    c_ui = 1 + alpha * r_ui
+    
+    Non-interactions: c = 1 (low confidence)
+    Interactions: c = 1 + alpha * count (high confidence)
+    """
+    return 1 + alpha * R
+```
+
+With alpha equals 40, a single interaction gets confidence 41. Five interactions get confidence 201. No interaction gets confidence 1.
+
+## The Modified Loss Function
+
+Explicit ALS minimises squared error on observed ratings only. Implicit ALS minimises weighted squared error on all entries.
+
+```python
+def compute_implicit_loss(P, C, U, V, lambda_reg):
+    """
+    Compute weighted loss for implicit feedback.
+    """
+    P_pred = U @ V.T
+    
+    errors = (P - P_pred) ** 2
+    weighted_errors = C * errors
+    reconstruction_loss = weighted_errors.sum()
+    
+    reg_loss = lambda_reg * (np.sum(U ** 2) + np.sum(V ** 2))
+    
+    return reconstruction_loss + reg_loss
+```
+
+The key difference is that we sum over all entries, including zeros, but multiply each error by its confidence. High confidence entries (where we have strong signal) contribute more to the loss. Low confidence entries (where we are guessing) contribute less.
+
+## Modified Update Rules
+
+The update equations change because we now use all items, weighted by confidence.
+
+```python
+def update_user_implicit(u_idx, P, C, V, lambda_reg):
+    """
+    Update user embedding for implicit feedback.
+    
+    u_u = (V.T @ C_u @ V + λI)^(-1) @ V.T @ C_u @ p_u
+    """
+    k = V.shape[1]
+    
+    c_u = C[u_idx]
+    p_u = P[u_idx]
+    
+    VtCuV = V.T @ (c_u[:, np.newaxis] * V)
+    VtCup = V.T @ (c_u * p_u)
+    
+    A = VtCuV + lambda_reg * np.eye(k)
+    b = VtCup
+    
+    return np.linalg.solve(A, b)
+```
+
+Instead of taking a subset of V for rated items, we use all items but weight by confidence. The diagonal matrix C_u (confidence for user u across all items) scales each item's contribution.
+
+## Training
+
+The training loop has the same structure as explicit ALS.
+
+```python
+def train_implicit_als(P, C, k, lambda_reg, n_epochs, verbose=True):
+    n_users, n_items = P.shape
+    
+    np.random.seed(42)
+    U = np.random.normal(0, 0.1, (n_users, k))
+    V = np.random.normal(0, 0.1, (n_items, k))
+    
+    loss_history = []
+    
+    for epoch in range(n_epochs):
+        for u_idx in range(n_users):
+            U[u_idx] = update_user_implicit(u_idx, P, C, V, lambda_reg)
+        
+        for i_idx in range(n_items):
+            V[i_idx] = update_item_implicit(i_idx, P, C, U, lambda_reg)
+        
+        loss = compute_implicit_loss(P, C, U, V, lambda_reg)
+        loss_history.append(loss)
+        
+        if verbose:
+            print(f"Epoch {epoch+1:2d} | Loss: {loss:,.0f}")
+    
+    return U, V, loss_history
+```
+
+## Evaluation
+
+For implicit feedback, hit rate is the natural metric because relevance is binary. NDCG still works but collapses to a simpler form when all relevant items have the same relevance grade.
+
+```python
+alpha = 40
+C = compute_confidence(R_implicit, alpha)
+
+U_imp, V_imp, _ = train_implicit_als(
+    P, C,
+    k=10,
+    lambda_reg=0.1,
+    n_epochs=20
+)
+
+for k in [5, 10, 20]:
+    hr = hit_rate_at_k(U_imp, V_imp, P, P_test, k=k)
+    print(f"K={k:2d} | Hit Rate: {hr:.4f}")
+```
+
+## Alpha Matters
+
+The alpha parameter controls how much we trust interactions relative to non interactions. Higher alpha means more weight on observed interactions.
+
+On MovieLens converted to implicit, lower alpha actually works better:
+
+| Alpha | Hit Rate at 10 |
+|-------|----------------|
+| 1 | 0.94 |
+| 10 | 0.91 |
+| 40 | 0.74 |
+| 100 | 0.51 |
+| 200 | 0.37 |
+
+This is counterintuitive. The reason is that MovieLens is explicit data converted to implicit. A user who rated 50 films did not "reject" the other 1632. They simply have not seen them. With high alpha, we are telling the model to be very confident that non interactions mean dislike. That is wrong for this data.
+
+On true implicit data like click streams, higher alpha often works better because the user was exposed to many items and chose not to interact with most of them. The non click carries more negative signal.
+
+The lesson is that alpha is dataset dependent. Always tune it.
+
+[Next: Optimisation and Tuning →](06-optimisation-tuning.qmd)

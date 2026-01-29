@@ -1,73 +1,29 @@
 ---
-title: "About Noor Rashid"
+title: "About"
 ---
 
-## Background
+I'm a Senior Data Scientist at the Wine & Spirit Education Trust, promoted from Data Analyst within eight months of joining. My work focuses on building ML systems that create measurable commercial impact.
 
-I'm a data scientist and machine learning engineer with a passion for building production systems that create measurable business impact. My journey began at Oxford University, where I developed a strong foundation in statistical modeling and computational methods.
+Before transitioning to data science, I spent eight years as a Senior Instructional Designer at SPSP (Saudi Aramco), designing curriculum for over 100,000 students. That background shapes how I approach learning and documentation: systematically, with clear explanations and concrete examples before abstract theory.
 
-**Current Focus:** Transitioning from analytics-focused DS work into ML Engineering leadership roles, with deep dives into MLOps, distributed systems, and real-time inference architecture.
+## What I've Built
 
----
+At WSET, I've delivered two significant systems. The first is an automated A/B testing platform that has generated high six figure revenue by enabling faster experimentation cycles. The second is an agentic RAG system with purchase based recommendations, built using Redis for caching and Pinecone for vector search.
 
-## Technical Expertise
+## Technical Focus
 
-### Machine Learning
-- **Deep Learning:** PyTorch (transformers, CNNs, RNNs), model fine-tuning, transfer learning
-- **Classical ML:** XGBoost, LightGBM, scikit-learn, feature engineering at scale
-- **Specializations:** Recommendation systems, time-series forecasting, NLP
+My current learning is centred on recommendation systems and deep learning for ranking. I'm working through the fundamentals by implementing algorithms from scratch in NumPy before reaching for library abstractions. The goal is to build intuition that transfers when these systems need to scale or when something breaks in production.
 
-### ML Engineering & MLOps
-- **Model Deployment:** FastAPI, Docker, Kubernetes, model serving patterns
-- **Experiment Tracking:** MLflow, Weights & Biases, DVC
-- **Orchestration:** Airflow, Prefect, CI/CD pipelines (GitHub Actions)
-- **Monitoring:** Prometheus, Grafana, model drift detection
-
-### Data Engineering
-- **Languages:** Python (expert), SQL (advanced), Spark (intermediate)
-- **Databases:** PostgreSQL, Snowflake, Redis
-- **ETL/ELT:** DBT, data validation frameworks (Great Expectations)
-
-### Cloud & Infrastructure
-- **Platforms:** AWS (SageMaker, EC2, S3), GCP (Vertex AI, BigQuery)
-- **IaC:** Terraform (learning), Docker Compose, Kubernetes manifests
-
----
+I work primarily in Python, with experience across PyTorch, scikit-learn, SQL, Docker, FastAPI, and AWS services including SageMaker and EC2.
 
 ## Education
 
-**University of Oxford** | Master's in [Your Degree]  
-*Relevant Coursework:* Machine Learning, Statistical Inference, Optimization
+**University of Oxford**
 
----
+## What I'm Looking For
 
-## Career Goals
+Senior Data Scientist or Machine Learning Engineer roles at organisations that value end to end ownership from research through to production. I'm particularly interested in teams working on ranking, recommendation, and personalisation systems at scale.
 
-**Target Roles:**
-- Senior Data Scientist (ML focus)
-- Machine Learning Engineer
-- Lead DS/MLE at high-growth startups or FAANG
+## Contact
 
-**What I'm Looking For:**
-- Organizations that value end-to-end ownership (research → production)
-- Teams pushing state-of-the-art into real-world applications
-- Mentorship from senior engineers and applied researchers
-
----
-
-## Outside of Work
-
-When I'm not building ML systems, I enjoy [your interests - e.g., "reading technical blogs, contributing to open-source projects, hiking, playing chess"].
-
----
-
-## Let's Connect
-
-- **Email:** [your.email@example.com](mailto:your.email@example.com)
-- **GitHub:** [github.com/yourusername](https://github.com/yourusername)
-- **LinkedIn:** [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- **CV/Resume:** [Download PDF](#)
-
-I'm open to discussing opportunities, technical deep-dives, or collaborations. Feel free to reach out!
-
-
+[nooraaden@gmail.com](mailto:nooraaden@gmail.com) · [LinkedIn](https://linkedin.com/in/rashid-noor-aden) · [GitHub](https://github.com/noor-rashid)

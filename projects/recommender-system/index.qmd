@@ -1,0 +1,47 @@
+---
+title: "Building Recommender Systems from Linear Algebra"
+subtitle: "A practical guide to collaborative filtering with ALS"
+---
+
+This series documents my implementation of collaborative filtering from first principles using the MovieLens 100K dataset. The goal is not to call library functions but to understand what happens inside them well enough to make production decisions when these systems need to scale.
+
+## The Series
+
+1. [**Data and Foundations**](01-data-foundations.qmd) Understanding sparsity, building the rating matrix, and why train test splits work differently for recommender systems.
+
+2. [**The ALS Algorithm**](02-als-algorithm.qmd) Deriving the update equations as ridge regression, implementing the loss function, and understanding why fixing one matrix makes the other solvable.
+
+3. [**Training and Evaluation**](03-training-evaluation.qmd) Building the full training loop, plotting convergence, computing RMSE, and comparing against a global mean baseline.
+
+4. [**Ranking Metrics**](04-ranking-metrics.qmd) Implementing hit rate and NDCG, understanding why RMSE is not enough, and generating top N recommendations.
+
+5. [**Implicit Feedback**](05-implicit-feedback.qmd) Converting explicit ratings to binary preferences, confidence weighting, and the modified loss function for implicit ALS.
+
+6. [**Optimisation and Tuning**](06-optimisation-tuning.qmd) The matrix inversion trick, alpha tuning for implicit feedback, and computational efficiency.
+
+## Why ALS?
+
+Alternating Least Squares is elegant because it transforms a non convex optimisation problem into a series of simple linear regressions. The objective function for matrix factorisation has two unknowns (user factors U and item factors V) that interact multiplicatively. Trying to solve for both simultaneously gives you a non convex landscape with saddle points and local minima.
+
+ALS sidesteps this by fixing one matrix and solving for the other. When V is fixed, optimising U becomes a set of independent ridge regression problems, one per user. Each has a closed form solution. No gradient descent, no learning rate tuning, no momentum hyperparameters.
+
+This is the foundation for understanding why more complex methods work. Neural collaborative filtering, two tower models, and modern retrieval systems all build on matrix factorisation intuitions.
+
+## The Dataset
+
+MovieLens 100K contains 100,000 ratings from 943 users across 1,682 films. The sparsity is 93.7%, which means the average user has rated only about 6% of available films. This is typical. No one watches everything. The challenge is learning patterns from the observed 6% to predict the missing 94%.
+
+## Results Summary
+
+| Metric | Value |
+|--------|-------|
+| Test RMSE | 0.97 |
+| Hit Rate at 10 | 0.65 |
+| NDCG at 10 | 0.18 |
+| Optimal lambda | 10.0 |
+
+The model beats the global mean baseline (RMSE 1.12) by 0.15 stars. Hit rate of 0.65 means that 65% of users get at least one relevant item in their top 10 recommendations. Compare this to random selection, which would give roughly 5 to 10%.
+
+## Code
+
+Full implementation available on [GitHub](https://github.com/noor-rashid/recommender-system).

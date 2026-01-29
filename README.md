@@ -1,32 +1,19 @@
-# Noor Rashid - Data Science Portfolio
+# Noor Rashid
 
-I'm a data scientist building production ML systems from first principles. This portfolio documents my journey from implementing foundational algorithms in NumPy to deploying scalable systems in the wild.
+I build production ML systems from first principles. Oxford educated, currently working as a Senior Data Scientist at WSET where I've delivered an automated A/B testing platform generating high six figure revenue and an agentic RAG system using Redis and Pinecone.
 
-Right now I'm working through collaborative filtering and recommendation systems, starting with matrix factorisation using Alternating Least Squares. The goal isn't just to use libraries but to understand the mathematics deeply enough to make informed engineering decisions when these systems hit production.
+This portfolio documents how I learn: by implementing algorithms from scratch, understanding the maths deeply enough to make informed engineering decisions when systems need to scale.
 
-Each project here connects theory to practice. I write the maths by hand, implement it in code, then scale it up with proper software engineering. You'll find full documentation, working code, and honest reflections on the real struggles, on what worked well and what didn't work so well. 
+## Current Project
 
-## Projects
+**[Building Recommender Systems from Linear Algebra](https://noor-rashid.github.io/noor-rashid-portfolio/projects/recommender-system/)**
 
-**Building a Recommender System from Linear Algebra** (In Progress)  
-Implementing collaborative filtering with ALS on MovieLens 100K. Starting with the fundamentals: matrix factorisation, sparsity, evaluation metrics. [View project →](projects/recommender-system/)
+Implementing collaborative filtering with ALS on MovieLens 100K. Not using library black boxes. Starting with matrix factorisation, deriving the update equations as ridge regression, and building evaluation metrics from scratch. The goal is intuition that transfers to production systems.
+
+## Technical Stack
+
+Python, PyTorch, scikit-learn, SQL, Docker, FastAPI, Redis, Pinecone, AWS
 
 ## Contact
 
-[nooraaden@gmail.com]| [GitHub](https://github.com/noor-rashid)# Noor Rashid - ML Portfolio
-
-Minimal Quarto-based portfolio site ready for project documentation as they're completed.
-
-**Live Site:** [noor-rashid.github.io/noor-rashid-portfolio](https://noor-rashid.github.io/noor-rashid-portfolio) *(after deployment)*
-
----
-
-## Current Status
-
-**Phase:** Portfolio skeleton deployed, projects under development
-
-This is a clean slate portfolio ready to showcase production ML projects as they're completed. The site infrastructure is deployment-ready; content will be added iteratively.
-
-
-
-
+[nooraaden@gmail.com](mailto:nooraaden@gmail.com) · [LinkedIn](https://linkedin.com/in/rashid-noor-aden) · [GitHub](https://github.com/noor-rashid)
