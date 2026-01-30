@@ -1,6 +1,6 @@
 # Noor Rashid
 
-I build production ML systems from first principles. Oxford educated, currently working as a Senior Data Scientist for a drinks company working on some really exciting data science and ML challenges. For instance, computing CLV in a non subscription context, demand forecasting, automated fast API pipelines and much more. 
+I build production ML systems from first principles. Oxford educated, currently working as a Data Scientist for a drinks company working on some really exciting data science and ML challenges. For instance, computing CLV in a non subscription context, demand forecasting, automated fast API pipelines and much more. 
 
 This portfolio documents how I learn which is by implementing algorithms from scratch, understanding the maths deeply enough to make informed engineering decisions when systems need to scale.
 
