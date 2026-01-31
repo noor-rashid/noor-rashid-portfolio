@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Noor Rashid</title>
+<title>Building Recommender Systems from Linear Algebra – Noor Rashid</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,25 +58,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./assets/favicon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-71f615bd5b258de2efaa731f8353afc1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-71f615bd5b258de2efaa731f8353afc1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Noor Rashid</span>
     </a>
   </div>
@@ -127,11 +127,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
         <li>
-    <a class="dropdown-item" href="./projects/recommender-system/index.html">
+    <a class="dropdown-item" href="../../projects/recommender-system/index.html">
  <span class="dropdown-text">Recommender System</span></a>
   </li>  
     </ul>
@@ -178,11 +178,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-ive-built" id="toc-what-ive-built" class="nav-link active" data-scroll-target="#what-ive-built">What I’ve Built</a></li>
-  <li><a href="#technical-focus" id="toc-technical-focus" class="nav-link" data-scroll-target="#technical-focus">Technical Focus</a></li>
-  <li><a href="#education" id="toc-education" class="nav-link" data-scroll-target="#education">Education</a></li>
-  <li><a href="#what-im-looking-for" id="toc-what-im-looking-for" class="nav-link" data-scroll-target="#what-im-looking-for">What I’m Looking For</a></li>
-  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
+  <li><a href="#the-series" id="toc-the-series" class="nav-link active" data-scroll-target="#the-series">The Series</a></li>
+  <li><a href="#why-als" id="toc-why-als" class="nav-link" data-scroll-target="#why-als">Why ALS?</a></li>
+  <li><a href="#the-dataset" id="toc-the-dataset" class="nav-link" data-scroll-target="#the-dataset">The Dataset</a></li>
+  <li><a href="#results-summary" id="toc-results-summary" class="nav-link" data-scroll-target="#results-summary">Results Summary</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
   </ul>
 </nav>
     </div>
@@ -191,7 +191,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">About</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Building Recommender Systems from Linear Algebra</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">A practical guide to collaborative filtering with ALS</p>
 </div>
 
 
@@ -208,28 +209,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>I’m a Senior Data Scientist at a leading drinks company, promoted from Data Analyst within eight months of joining. My work focuses on building ML systems that create measurable commercial impact.</p>
-<p>Before transitioning to data science, I spent eight years as a Senior Instructional Designer at a Saudi Aramco company, designing curriculum for over 100,000 students. That background shapes how I approach learning and documentation, that is, systematically, with clear explanations and concrete examples before abstract theory.</p>
-<section id="what-ive-built" class="level2">
-<h2 class="anchored" data-anchor-id="what-ive-built">What I’ve Built</h2>
-<p>At my current employment, I’ve delivered two significant systems. The first is an automated A/B testing platform that has generated high six figure revenue by enabling faster experimentation cycles. The second is an agentic RAG system with purchase based recommendations, built using Redis for caching and Pinecone for vector search.</p>
+<p>This series documents my implementation of collaborative filtering from first principles using the MovieLens 100K dataset. The goal is not to call library functions but to understand what happens inside them well enough to make production decisions when these systems need to scale.</p>
+<section id="the-series" class="level2">
+<h2 class="anchored" data-anchor-id="the-series">The Series</h2>
+<ol type="1">
+<li><p><a href="../../projects/recommender-system/01-data-foundations.html"><strong>Data and Foundations</strong></a> Understanding sparsity, building the rating matrix, and why train test splits work differently for recommender systems.</p></li>
+<li><p><a href="../../projects/recommender-system/02-als-algorithm.html"><strong>The ALS Algorithm</strong></a> Deriving the update equations as ridge regression, implementing the loss function, and understanding why fixing one matrix makes the other solvable.</p></li>
+<li><p><a href="../../projects/recommender-system/03-training-evaluation.html"><strong>Training and Evaluation</strong></a> Building the full training loop, plotting convergence, computing RMSE, and comparing against a global mean baseline.</p></li>
+<li><p><a href="../../projects/recommender-system/04-ranking-metrics.html"><strong>Ranking Metrics</strong></a> Implementing hit rate and NDCG, understanding why RMSE is not enough, and generating top N recommendations.</p></li>
+<li><p><a href="../../projects/recommender-system/05-implicit-feedback.html"><strong>Implicit Feedback</strong></a> Converting explicit ratings to binary preferences, confidence weighting, and the modified loss function for implicit ALS.</p></li>
+<li><p><a href="../../projects/recommender-system/06-optimisation-tuning.html"><strong>Optimisation and Tuning</strong></a> The matrix inversion trick, alpha tuning for implicit feedback, and computational efficiency.</p></li>
+</ol>
 </section>
-<section id="technical-focus" class="level2">
-<h2 class="anchored" data-anchor-id="technical-focus">Technical Focus</h2>
-<p>My current learning is centred on recommendation systems and deep learning for ranking. I’m working through the fundamentals by implementing algorithms from scratch in NumPy before reaching for library abstractions. The goal is to build intuition that transfers when these systems need to scale or when something breaks in production.</p>
-<p>I work primarily in Python, with experience across PyTorch, scikit-learn, SQL, Docker, FastAPI, and AWS services including SageMaker and EC2.</p>
+<section id="why-als" class="level2">
+<h2 class="anchored" data-anchor-id="why-als">Why ALS?</h2>
+<p>Alternating Least Squares is elegant because it transforms a non convex optimisation problem into a series of simple linear regressions. The objective function for matrix factorisation has two unknowns (user factors U and item factors V) that interact multiplicatively. Trying to solve for both simultaneously gives you a non convex landscape with saddle points and local minima.</p>
+<p>ALS sidesteps this by fixing one matrix and solving for the other. When V is fixed, optimising U becomes a set of independent ridge regression problems, one per user. Each has a closed form solution. No gradient descent, no learning rate tuning, no momentum hyperparameters.</p>
+<p>This is the foundation for understanding why more complex methods work. Neural collaborative filtering, two tower models, and modern retrieval systems all build on matrix factorisation intuitions.</p>
 </section>
-<section id="education" class="level2">
-<h2 class="anchored" data-anchor-id="education">Education</h2>
-<p><strong>University of Oxford, B.A. English Literature and Language, 2.1</strong></p>
+<section id="the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="the-dataset">The Dataset</h2>
+<p>MovieLens 100K contains 100,000 ratings from 943 users across 1,682 films. The sparsity is 93.7%, which means the average user has rated only about 6% of available films. This is typical. No one watches everything. The challenge is learning patterns from the observed 6% to predict the missing 94%.</p>
 </section>
-<section id="what-im-looking-for" class="level2">
-<h2 class="anchored" data-anchor-id="what-im-looking-for">What I’m Looking For</h2>
-<p>Senior Data Scientist or Machine Learning Engineer roles at organisations that value end to end ownership from research through to production. I’m particularly interested in teams working on ranking, recommendation, and personalisation systems at scale.</p>
+<section id="results-summary" class="level2">
+<h2 class="anchored" data-anchor-id="results-summary">Results Summary</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Test RMSE</td>
+<td>0.97</td>
+</tr>
+<tr class="even">
+<td>Hit Rate at 10</td>
+<td>0.65</td>
+</tr>
+<tr class="odd">
+<td>NDCG at 10</td>
+<td>0.18</td>
+</tr>
+<tr class="even">
+<td>Optimal lambda</td>
+<td>10.0</td>
+</tr>
+</tbody>
+</table>
+<p>The model beats the global mean baseline (RMSE 1.12) by 0.15 stars. Hit rate of 0.65 means that 65% of users get at least one relevant item in their top 10 recommendations. Compare this to random selection, which would give roughly 5 to 10%.</p>
 </section>
-<section id="contact" class="level2">
-<h2 class="anchored" data-anchor-id="contact">Contact</h2>
-<p><a href="mailto:nooraaden@gmail.com">nooraaden@gmail.com</a> · <a href="https://linkedin.com/in/rashid-noor-aden">LinkedIn</a> · <a href="https://github.com/noor-rashid">GitHub</a></p>
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<p>Full implementation available on <a href="https://github.com/noor-rashid/recommender-system">GitHub</a>.</p>
 
 
 <!-- -->
@@ -694,34 +728,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "About"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>I'm a Senior Data Scientist at a leading drinks company, promoted from Data Analyst within eight months of joining. My work focuses on building ML systems that create measurable commercial impact.</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Before transitioning to data science, I spent eight years as a Senior Instructional Designer at a Saudi Aramco company, designing curriculum for over 100,000 students. That background shapes how I approach learning and documentation, that is, systematically, with clear explanations and concrete examples before abstract theory.</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## What I've Built</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>At my current employment, I've delivered two significant systems. The first is an automated A/B testing platform that has generated high six figure revenue by enabling faster experimentation cycles. The second is an agentic RAG system with purchase based recommendations, built using Redis for caching and Pinecone for vector search.</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Technical Focus</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>My current learning is centred on recommendation systems and deep learning for ranking. I'm working through the fundamentals by implementing algorithms from scratch in NumPy before reaching for library abstractions. The goal is to build intuition that transfers when these systems need to scale or when something breaks in production.</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>I work primarily in Python, with experience across PyTorch, scikit-learn, SQL, Docker, FastAPI, and AWS services including SageMaker and EC2.</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Education</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>**University of Oxford, B.A. English Literature and Language, 2.1**</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## What I'm Looking For</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Senior Data Scientist or Machine Learning Engineer roles at organisations that value end to end ownership from research through to production. I'm particularly interested in teams working on ranking, recommendation, and personalisation systems at scale.</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contact</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">nooraaden@gmail.com</span><span class="co">](mailto:nooraaden@gmail.com)</span> · <span class="co">[</span><span class="ot">LinkedIn</span><span class="co">](https://linkedin.com/in/rashid-noor-aden)</span> · <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/noor-rashid)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Building Recommender Systems from Linear Algebra"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "A practical guide to collaborative filtering with ALS"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>This series documents my implementation of collaborative filtering from first principles using the MovieLens 100K dataset. The goal is not to call library functions but to understand what happens inside them well enough to make production decisions when these systems need to scale.</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Series</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="co">[</span><span class="ot">**Data and Foundations**</span><span class="co">](01-data-foundations.qmd)</span> Understanding sparsity, building the rating matrix, and why train test splits work differently for recommender systems.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span><span class="co">[</span><span class="ot">**The ALS Algorithm**</span><span class="co">](02-als-algorithm.qmd)</span> Deriving the update equations as ridge regression, implementing the loss function, and understanding why fixing one matrix makes the other solvable.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span><span class="co">[</span><span class="ot">**Training and Evaluation**</span><span class="co">](03-training-evaluation.qmd)</span> Building the full training loop, plotting convergence, computing RMSE, and comparing against a global mean baseline.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span><span class="co">[</span><span class="ot">**Ranking Metrics**</span><span class="co">](04-ranking-metrics.qmd)</span> Implementing hit rate and NDCG, understanding why RMSE is not enough, and generating top N recommendations.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span><span class="co">[</span><span class="ot">**Implicit Feedback**</span><span class="co">](05-implicit-feedback.qmd)</span> Converting explicit ratings to binary preferences, confidence weighting, and the modified loss function for implicit ALS.</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span><span class="co">[</span><span class="ot">**Optimisation and Tuning**</span><span class="co">](06-optimisation-tuning.qmd)</span> The matrix inversion trick, alpha tuning for implicit feedback, and computational efficiency.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why ALS?</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Alternating Least Squares is elegant because it transforms a non convex optimisation problem into a series of simple linear regressions. The objective function for matrix factorisation has two unknowns (user factors U and item factors V) that interact multiplicatively. Trying to solve for both simultaneously gives you a non convex landscape with saddle points and local minima.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>ALS sidesteps this by fixing one matrix and solving for the other. When V is fixed, optimising U becomes a set of independent ridge regression problems, one per user. Each has a closed form solution. No gradient descent, no learning rate tuning, no momentum hyperparameters.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>This is the foundation for understanding why more complex methods work. Neural collaborative filtering, two tower models, and modern retrieval systems all build on matrix factorisation intuitions.</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Dataset</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>MovieLens 100K contains 100,000 ratings from 943 users across 1,682 films. The sparsity is 93.7%, which means the average user has rated only about 6% of available films. This is typical. No one watches everything. The challenge is learning patterns from the observed 6% to predict the missing 94%.</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Results Summary</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Metric <span class="pp">|</span> Value <span class="pp">|</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|-------|</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Test RMSE <span class="pp">|</span> 0.97 <span class="pp">|</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Hit Rate at 10 <span class="pp">|</span> 0.65 <span class="pp">|</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> NDCG at 10 <span class="pp">|</span> 0.18 <span class="pp">|</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Optimal lambda <span class="pp">|</span> 10.0 <span class="pp">|</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>The model beats the global mean baseline (RMSE 1.12) by 0.15 stars. Hit rate of 0.65 means that 65% of users get at least one relevant item in their top 10 recommendations. Compare this to random selection, which would give roughly 5 to 10%.</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Code</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>Full implementation available on <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/noor-rashid/recommender-system)</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

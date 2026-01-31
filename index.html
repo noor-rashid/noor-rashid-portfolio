@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a5703f0446d3c99e903594ec6f67d95f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-71f615bd5b258de2efaa731f8353afc1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -112,14 +112,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./assets/logo.png" alt="" class="navbar-logo light-content">
-    <img src="./assets/logo.png" alt="" class="navbar-logo dark-content">
-    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Noor Rashid</span>
     </a>
@@ -138,6 +134,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="./projects/recommender-system/index.html">
+ <span class="dropdown-text">Recommender System</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -163,24 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">Noor Rashid</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-            <p class="subtitle lead">Machine Learning Engineer &amp; Data Scientist</p>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -188,53 +178,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a></li>
-  <li><a href="#featured-projects" id="toc-featured-projects" class="nav-link" data-scroll-target="#featured-projects">Featured Projects</a>
+  <li><a href="#projects" id="toc-projects" class="nav-link active" data-scroll-target="#projects">Projects</a>
   <ul class="collapse">
-  <li><a href="#portfolio-under-construction" id="toc-portfolio-under-construction" class="nav-link" data-scroll-target="#portfolio-under-construction">Portfolio Under Construction</a></li>
+  <li><a href="#building-recommender-systems-from-linear-algebra" id="toc-building-recommender-systems-from-linear-algebra" class="nav-link" data-scroll-target="#building-recommender-systems-from-linear-algebra">Building Recommender Systems from Linear Algebra</a></li>
   </ul></li>
-  <li><a href="#about" id="toc-about" class="nav-link" data-scroll-target="#about">About</a></li>
   <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Noor Rashid</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<p class="subtitle lead">Machine Learning Engineer &amp; Data Scientist</p>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
-<section id="welcome" class="level2">
-<h2 class="anchored" data-anchor-id="welcome">Welcome</h2>
-<p>I build production-grade machine learning systems that solve real business problems. This portfolio showcases end-to-end ML projects covering the full engineering lifecycle: from problem framing and data pipelines through model development, deployment, and monitoring.</p>
-<p><strong>Core Expertise:</strong> Deep Learning, MLOps, Feature Engineering, Model Deployment, A/B Testing, Cloud Architecture (AWS/GCP)</p>
-<p><strong>Tech Stack:</strong> Python, PyTorch, SQL, Docker, Kubernetes, FastAPI, MLflow, Airflow, Spark</p>
-<hr>
+</header>
+
+
+<p>I build production ML systems from first principles. My approach is to implement algorithms from scratch, understand the mathematics deeply, then make informed engineering decisions when systems need to scale.</p>
+<p>Currently a Senior Data Scientist at WSET, where I’ve built an automated A/B testing platform generating high six figure revenue and an agentic RAG system with purchase based recommendations using Redis and Pinecone.</p>
+<section id="projects" class="level2">
+<h2 class="anchored" data-anchor-id="projects">Projects</h2>
+<section id="building-recommender-systems-from-linear-algebra" class="level3 project-card">
+<h3 class="anchored" data-anchor-id="building-recommender-systems-from-linear-algebra">Building Recommender Systems from Linear Algebra</h3>
+<p>Implementing collaborative filtering with ALS on MovieLens 100K. This project covers matrix factorisation from first principles, deriving update equations as ridge regression, and building evaluation metrics including NDCG and hit rate. The goal is not to use library black boxes but to understand what happens under the hood well enough to make production decisions.</p>
+<p><a href="./projects/recommender-system/index.html">Read the full series →</a></p>
 </section>
-<section id="featured-projects" class="level2">
-<h2 class="anchored" data-anchor-id="featured-projects">Featured Projects</h2>
-<section id="portfolio-under-construction" class="level3 project-card">
-<h3 class="anchored" data-anchor-id="portfolio-under-construction">Portfolio Under Construction</h3>
-<p>I’m currently building production-quality ML projects to showcase here. Each project will demonstrate end-to-end capabilities from data engineering through deployment and monitoring.</p>
-<p><strong>Coming Soon:</strong> - Recommendation system with collaborative filtering at scale - Time-series forecasting with uncertainty quantification - NLP application with fine-tuned transformers</p>
-<p>Check back soon or <a href="#contact">connect with me</a> to discuss my work in progress.</p>
-</section>
-<hr>
-</section>
-<section id="about" class="level2">
-<h2 class="anchored" data-anchor-id="about">About</h2>
-<p>Oxford-educated data scientist transitioning into ML Engineering leadership roles. Passionate about building robust, scalable ML systems and bridging the gap between research and production.</p>
-<p><strong>Currently:</strong> Building expertise in MLOps, distributed training, and real-time inference systems. Developing portfolio projects that demonstrate production-grade engineering practices.</p>
-<p><strong>Open to:</strong> Senior DS, MLE, and Lead roles at FAANG, high-growth startups, and quant firms.</p>
-<hr>
 </section>
 <section id="contact" class="level2">
 <h2 class="anchored" data-anchor-id="contact">Contact</h2>
-<p>I’m open to discussing opportunities, technical collaborations, or connecting with fellow ML practitioners.</p>
-<p><strong>Get in touch:</strong><br>
-<a href="https://github.com/yourusername">GitHub</a> | <a href="https://linkedin.com/in/yourprofile">LinkedIn</a> | <a href="mailto:your.email@example.com">Email</a></p>
-<p><em>Resume available upon request</em></p>
+<p><a href="mailto:nooraaden@gmail.com">nooraaden@gmail.com</a> · <a href="https://linkedin.com/in/rashid-noor-aden">LinkedIn</a> · <a href="https://github.com/noor-rashid">GitHub</a></p>
 
 
 <!-- -->
@@ -366,7 +353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/noor-rashid\.github\.io\/noor-rashid-portfolio\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -385,8 +372,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             if (link.getAttribute("rel") === null) {
               link.setAttribute("rel", "noopener");
             }
-            // default icon
-            link.classList.add("external");
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -703,54 +688,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Noor Rashid"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Machine Learning Engineer &amp; Data Scientist"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">title-block-banner:</span><span class="co"> true</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Welcome</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>I build production-grade machine learning systems that solve real business problems. This portfolio showcases end-to-end ML projects covering the full engineering lifecycle: from problem framing and data pipelines through model development, deployment, and monitoring.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>**Core Expertise:** Deep Learning, MLOps, Feature Engineering, Model Deployment, A/B Testing, Cloud Architecture (AWS/GCP)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>**Tech Stack:** Python, PyTorch, SQL, Docker, Kubernetes, FastAPI, MLflow, Airflow, Spark</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>I build production ML systems from first principles. My approach is to implement algorithms from scratch, understand the mathematics deeply, then make informed engineering decisions when systems need to scale.</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Currently a Senior Data Scientist at WSET, where I've built an automated A/B testing platform generating high six figure revenue and an agentic RAG system with purchase based recommendations using Redis and Pinecone.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Projects</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>::: {.project-card}</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">### Building Recommender Systems from Linear Algebra</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Implementing collaborative filtering with ALS on MovieLens 100K. This project covers matrix factorisation from first principles, deriving update equations as ridge regression, and building evaluation metrics including NDCG and hit rate. The goal is not to use library black boxes but to understand what happens under the hood well enough to make production decisions.</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Featured Projects</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>::: {.project-card}</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">### Portfolio Under Construction</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Read the full series →</span><span class="co">](projects/recommender-system/index.qmd)</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contact</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>I'm currently building production-quality ML projects to showcase here. Each project will demonstrate end-to-end capabilities from data engineering through deployment and monitoring.</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>**Coming Soon:**</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Recommendation system with collaborative filtering at scale</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Time-series forecasting with uncertainty quantification</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>NLP application with fine-tuned transformers</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Check back soon or <span class="co">[</span><span class="ot">connect with me</span><span class="co">](#contact)</span> to discuss my work in progress.</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## About</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>Oxford-educated data scientist transitioning into ML Engineering leadership roles. Passionate about building robust, scalable ML systems and bridging the gap between research and production.</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>**Currently:** Building expertise in MLOps, distributed training, and real-time inference systems. Developing portfolio projects that demonstrate production-grade engineering practices.</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>**Open to:** Senior DS, MLE, and Lead roles at FAANG, high-growth startups, and quant firms.</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contact {#contact}</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>I'm open to discussing opportunities, technical collaborations, or connecting with fellow ML practitioners.</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>**Get in touch:**  </span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/yourusername)</span> | <span class="co">[</span><span class="ot">LinkedIn</span><span class="co">](https://linkedin.com/in/yourprofile)</span> | <span class="co">[</span><span class="ot">Email</span><span class="co">](mailto:your.email@example.com)</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>*Resume available upon request*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">nooraaden@gmail.com</span><span class="co">](mailto:nooraaden@gmail.com)</span> · <span class="co">[</span><span class="ot">LinkedIn</span><span class="co">](https://linkedin.com/in/rashid-noor-aden)</span> · <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/noor-rashid)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -759,7 +715,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© 2024 Noor Rashid. Built with <a href="https://quarto.org">Quarto</a></p>
+<p>© 2025 Noor Rashid. Built with <a href="https://quarto.org">Quarto</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

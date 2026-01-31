@@ -2,85 +2,393 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About Noor Rashid",
+    "title": "About",
     "section": "",
-    "text": "I’m a data scientist and machine learning engineer with a passion for building production systems that create measurable business impact. My journey began at Oxford University, where I developed a strong foundation in statistical modeling and computational methods.\nCurrent Focus: Transitioning from analytics-focused DS work into ML Engineering leadership roles, with deep dives into MLOps, distributed systems, and real-time inference architecture."
+    "text": "I’m a Senior Data Scientist at a leading drinks company, promoted from Data Analyst within eight months of joining. My work focuses on building ML systems that create measurable commercial impact.\nBefore transitioning to data science, I spent eight years as a Senior Instructional Designer at a Saudi Aramco company, designing curriculum for over 100,000 students. That background shapes how I approach learning and documentation, that is, systematically, with clear explanations and concrete examples before abstract theory."
   },
   {
-    "objectID": "about.html#background",
-    "href": "about.html#background",
-    "title": "About Noor Rashid",
-    "section": "",
-    "text": "I’m a data scientist and machine learning engineer with a passion for building production systems that create measurable business impact. My journey began at Oxford University, where I developed a strong foundation in statistical modeling and computational methods.\nCurrent Focus: Transitioning from analytics-focused DS work into ML Engineering leadership roles, with deep dives into MLOps, distributed systems, and real-time inference architecture."
+    "objectID": "about.html#what-ive-built",
+    "href": "about.html#what-ive-built",
+    "title": "About",
+    "section": "What I’ve Built",
+    "text": "What I’ve Built\nAt my current employment, I’ve delivered two significant systems. The first is an automated A/B testing platform that has generated high six figure revenue by enabling faster experimentation cycles. The second is an agentic RAG system with purchase based recommendations, built using Redis for caching and Pinecone for vector search."
   },
   {
-    "objectID": "about.html#technical-expertise",
-    "href": "about.html#technical-expertise",
-    "title": "About Noor Rashid",
-    "section": "Technical Expertise",
-    "text": "Technical Expertise\n\nMachine Learning\n\nDeep Learning: PyTorch (transformers, CNNs, RNNs), model fine-tuning, transfer learning\nClassical ML: XGBoost, LightGBM, scikit-learn, feature engineering at scale\nSpecializations: Recommendation systems, time-series forecasting, NLP\n\n\n\nML Engineering & MLOps\n\nModel Deployment: FastAPI, Docker, Kubernetes, model serving patterns\nExperiment Tracking: MLflow, Weights & Biases, DVC\nOrchestration: Airflow, Prefect, CI/CD pipelines (GitHub Actions)\nMonitoring: Prometheus, Grafana, model drift detection\n\n\n\nData Engineering\n\nLanguages: Python (expert), SQL (advanced), Spark (intermediate)\nDatabases: PostgreSQL, Snowflake, Redis\nETL/ELT: DBT, data validation frameworks (Great Expectations)\n\n\n\nCloud & Infrastructure\n\nPlatforms: AWS (SageMaker, EC2, S3), GCP (Vertex AI, BigQuery)\nIaC: Terraform (learning), Docker Compose, Kubernetes manifests"
+    "objectID": "about.html#technical-focus",
+    "href": "about.html#technical-focus",
+    "title": "About",
+    "section": "Technical Focus",
+    "text": "Technical Focus\nMy current learning is centred on recommendation systems and deep learning for ranking. I’m working through the fundamentals by implementing algorithms from scratch in NumPy before reaching for library abstractions. The goal is to build intuition that transfers when these systems need to scale or when something breaks in production.\nI work primarily in Python, with experience across PyTorch, scikit-learn, SQL, Docker, FastAPI, and AWS services including SageMaker and EC2."
   },
   {
     "objectID": "about.html#education",
     "href": "about.html#education",
-    "title": "About Noor Rashid",
+    "title": "About",
     "section": "Education",
-    "text": "Education\nUniversity of Oxford | Master’s in [Your Degree]\nRelevant Coursework: Machine Learning, Statistical Inference, Optimization"
+    "text": "Education\nUniversity of Oxford, B.A. English Literature and Language, 2.1"
   },
   {
-    "objectID": "about.html#career-goals",
-    "href": "about.html#career-goals",
-    "title": "About Noor Rashid",
-    "section": "Career Goals",
-    "text": "Career Goals\nTarget Roles: - Senior Data Scientist (ML focus) - Machine Learning Engineer - Lead DS/MLE at high-growth startups or FAANG\nWhat I’m Looking For: - Organizations that value end-to-end ownership (research → production) - Teams pushing state-of-the-art into real-world applications - Mentorship from senior engineers and applied researchers"
+    "objectID": "about.html#what-im-looking-for",
+    "href": "about.html#what-im-looking-for",
+    "title": "About",
+    "section": "What I’m Looking For",
+    "text": "What I’m Looking For\nSenior Data Scientist or Machine Learning Engineer roles at organisations that value end to end ownership from research through to production. I’m particularly interested in teams working on ranking, recommendation, and personalisation systems at scale."
   },
   {
-    "objectID": "about.html#outside-of-work",
-    "href": "about.html#outside-of-work",
-    "title": "About Noor Rashid",
-    "section": "Outside of Work",
-    "text": "Outside of Work\nWhen I’m not building ML systems, I enjoy [your interests - e.g., “reading technical blogs, contributing to open-source projects, hiking, playing chess”]."
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About",
+    "section": "Contact",
+    "text": "Contact\nnooraaden@gmail.com · LinkedIn · GitHub"
   },
   {
-    "objectID": "about.html#lets-connect",
-    "href": "about.html#lets-connect",
-    "title": "About Noor Rashid",
-    "section": "Let’s Connect",
-    "text": "Let’s Connect\n\nEmail: your.email@example.com\nGitHub: github.com/yourusername\nLinkedIn: linkedin.com/in/yourprofile\nCV/Resume: Download PDF\n\nI’m open to discussing opportunities, technical deep-dives, or collaborations. Feel free to reach out!"
+    "objectID": "projects/recommender-system/04-ranking-metrics.html",
+    "href": "projects/recommender-system/04-ranking-metrics.html",
+    "title": "Ranking Metrics",
+    "section": "",
+    "text": "RMSE measures how accurately we predict individual ratings. But users do not see individual predictions. They see a ranked list: ten films Netflix thinks you will like, twenty products Amazon suggests you buy. What matters is whether the good items appear near the top.\nRanking metrics capture this. Instead of asking “how close was the predicted rating to the actual rating”, they ask “did the relevant items appear in the top K positions”."
+  },
+  {
+    "objectID": "projects/recommender-system/04-ranking-metrics.html#generating-recommendations",
+    "href": "projects/recommender-system/04-ranking-metrics.html#generating-recommendations",
+    "title": "Ranking Metrics",
+    "section": "Generating Recommendations",
+    "text": "Generating Recommendations\nBefore we can evaluate rankings, we need to generate them. For each user, we compute predicted scores for all items, exclude items they have already interacted with, and take the top K.\ndef predict_all_for_user(u_idx, U, V):\n    \"\"\"\n    Predict ratings for all items for a given user.\n    \"\"\"\n    return U[u_idx] @ V.T\n\n\ndef get_top_n_recommendations(u_idx, U, V, mask_train, n=10):\n    \"\"\"\n    Get top N recommendations for a user, excluding already rated items.\n    \"\"\"\n    scores = U[u_idx] @ V.T\n    \n    already_rated = mask_train[u_idx] &gt; 0\n    scores[already_rated] = -np.inf\n    \n    return np.argsort(scores)[::-1][:n]\nThe argsort call returns indices that would sort the array in ascending order. We reverse it with [::-1] to get descending order, then take the first n."
+  },
+  {
+    "objectID": "projects/recommender-system/04-ranking-metrics.html#hit-rate",
+    "href": "projects/recommender-system/04-ranking-metrics.html#hit-rate",
+    "title": "Ranking Metrics",
+    "section": "Hit Rate",
+    "text": "Hit Rate\nHit rate at K asks a simple question: did any of the top K recommendations appear in the user’s test set?\ndef hit_rate_at_k(U, V, mask_train, mask_test, k=10):\n    \"\"\"\n    Compute hit rate at K.\n    \n    Hit rate = fraction of users with at least one relevant item in top K.\n    \"\"\"\n    n_users = U.shape[0]\n    hits = 0\n    \n    for u_idx in range(n_users):\n        top_k = get_top_n_recommendations(u_idx, U, V, mask_train, n=k)\n        \n        test_items = np.where(mask_test[u_idx] &gt; 0)[0]\n        \n        if len(np.intersect1d(top_k, test_items)) &gt; 0:\n            hits += 1\n    \n    return hits / n_users\nA hit rate of 0.65 at K equals 10 means that 65% of users got at least one item they actually interacted with in their top 10 recommendations. Compare this to random selection. If you picked 10 items uniformly at random from 1682, your chance of hitting one of the roughly 20 test items is around 10%. The model is doing much better than random."
+  },
+  {
+    "objectID": "projects/recommender-system/04-ranking-metrics.html#ndcg",
+    "href": "projects/recommender-system/04-ranking-metrics.html#ndcg",
+    "title": "Ranking Metrics",
+    "section": "NDCG",
+    "text": "NDCG\nHit rate treats all positions equally. A relevant item at position 1 counts the same as one at position 10. NDCG (Normalised Discounted Cumulative Gain) fixes this by giving more credit to relevant items that appear earlier.\nThe idea is that positions are discounted logarithmically. Position 1 gets full credit. Position 2 gets credit divided by log base 2 of 3. Position 10 gets credit divided by log base 2 of 11.\ndef dcg_at_k(ranked_items, relevant_items, k):\n    \"\"\"\n    Compute Discounted Cumulative Gain at K.\n    \"\"\"\n    dcg = 0.0\n    for i, item in enumerate(ranked_items[:k]):\n        if item in relevant_items:\n            dcg += 1.0 / np.log2(i + 2)\n    return dcg\n\n\ndef ndcg_at_k(U, V, mask_train, mask_test, R_test, k=10):\n    \"\"\"\n    Compute NDCG at K averaged across all users.\n    \"\"\"\n    n_users = U.shape[0]\n    ndcg_scores = []\n    \n    for u_idx in range(n_users):\n        relevant_items = set(np.where(\n            (mask_test[u_idx] &gt; 0) & (R_test[u_idx] &gt;= 4)\n        )[0])\n        \n        if len(relevant_items) == 0:\n            continue\n        \n        top_k = get_top_n_recommendations(u_idx, U, V, mask_train, n=k)\n        \n        dcg = dcg_at_k(top_k, relevant_items, k)\n        \n        ideal_dcg = dcg_at_k(list(relevant_items), relevant_items, k)\n        \n        if ideal_dcg &gt; 0:\n            ndcg_scores.append(dcg / ideal_dcg)\n    \n    return np.mean(ndcg_scores)\nNotice the threshold of 4. With explicit ratings, we define “relevant” as items the user rated 4 or higher. They did not just interact with these items; they liked them.\nNDCG equals 1 means perfect ranking: all relevant items at the very top, in the right order. NDCG equals 0 means no relevant items in the top K."
+  },
+  {
+    "objectID": "projects/recommender-system/04-ranking-metrics.html#results",
+    "href": "projects/recommender-system/04-ranking-metrics.html#results",
+    "title": "Ranking Metrics",
+    "section": "Results",
+    "text": "Results\nTraining with the optimal lambda of 10 and evaluating both metrics:\nU, V, _ = train_als(\n    R_train, mask_train,\n    k=10,\n    lambda_reg=10.0,\n    n_epochs=20,\n    verbose=False\n)\n\nfor k in [5, 10, 20]:\n    hr = hit_rate_at_k(U, V, mask_train, mask_test, k=k)\n    ndcg = ndcg_at_k(U, V, mask_train, mask_test, R_test, k=k)\n    print(f\"K={k:2d} | Hit Rate: {hr:.4f} | NDCG: {ndcg:.4f}\")\n\n\n\nK\nHit Rate\nNDCG\n\n\n\n\n5\n0.49\n0.18\n\n\n10\n0.65\n0.18\n\n\n20\n0.77\n0.20\n\n\n\nHit rate increases with K because you have more slots to place a relevant item. NDCG is relatively flat, suggesting relevant items are scattered throughout the list rather than concentrated at the top.\nAn NDCG of 0.18 is modest. The model finds relevant items but does not consistently place them in positions 1 or 2. There is room for improvement, which is what more sophisticated models try to achieve."
+  },
+  {
+    "objectID": "projects/recommender-system/04-ranking-metrics.html#when-to-use-which",
+    "href": "projects/recommender-system/04-ranking-metrics.html#when-to-use-which",
+    "title": "Ranking Metrics",
+    "section": "When to Use Which",
+    "text": "When to Use Which\nHit rate is intuitive and easy to explain. It answers “will users find something they like in the recommendations”. NDCG is more sensitive to ranking quality and penalises models that bury good items.\nFor implicit feedback where you only know “interacted or not”, hit rate is often more appropriate because relevance is binary. For explicit feedback with graded relevance, NDCG captures more information.\nIn practice, you track both.\nNext: Implicit Feedback →"
+  },
+  {
+    "objectID": "projects/recommender-system/02-als-algorithm.html",
+    "href": "projects/recommender-system/02-als-algorithm.html",
+    "title": "The ALS Algorithm",
+    "section": "",
+    "text": "Matrix factorisation wants to find two matrices U and V such that their product approximates the observed ratings. The objective is to minimise the squared error between predicted and actual ratings, plus a regularisation term to prevent overfitting.\nThe problem is that this objective is non convex. U and V interact multiplicatively. If you scale U up by 2 and scale V down by 2, the product stays the same. This creates a landscape full of saddle points and equivalent solutions.\nAlternating Least Squares solves this elegantly by fixing one matrix and optimising the other."
+  },
+  {
+    "objectID": "projects/recommender-system/02-als-algorithm.html#the-loss-function",
+    "href": "projects/recommender-system/02-als-algorithm.html#the-loss-function",
+    "title": "The ALS Algorithm",
+    "section": "The Loss Function",
+    "text": "The Loss Function\nThe loss we minimise has two parts. The reconstruction loss measures how well our predictions match observed ratings. The regularisation loss penalises large values in U and V.\ndef compute_loss(R, U, V, mask, lambda_reg):\n    \"\"\"\n    Compute ALS loss: squared error on observed + L2 regularisation.\n    \"\"\"\n    R_pred = U @ V.T\n    \n    errors = (R - R_pred) ** 2\n    reconstruction_loss = (mask * errors).sum()\n    \n    reg_loss = lambda_reg * (np.sum(U ** 2) + np.sum(V ** 2))\n    \n    return reconstruction_loss + reg_loss\nThe mask is crucial. We only compute errors on entries where we have actual ratings. The zeros in R do not mean “user hated this film”. They mean “user has not seen this film”. We should not try to predict zero for unseen films."
+  },
+  {
+    "objectID": "projects/recommender-system/02-als-algorithm.html#why-fixing-one-matrix-works",
+    "href": "projects/recommender-system/02-als-algorithm.html#why-fixing-one-matrix-works",
+    "title": "The ALS Algorithm",
+    "section": "Why Fixing One Matrix Works",
+    "text": "Why Fixing One Matrix Works\nWhen V is fixed, the loss function becomes quadratic in U. Each user’s embedding can be optimised independently. The solution for user u is a ridge regression problem.\nConsider what we are trying to do for user u. We want to find a k dimensional vector that, when dotted with the item vectors for films this user has rated, gives predictions close to their actual ratings.\nIf user u rated items 3, 17, and 42, we take the corresponding rows from V. Call this subset V_rated. The user’s observed ratings for those items form a vector r_u. We want to find u_u such that V_rated times u_u is close to r_u.\nThis is exactly least squares. With regularisation, it becomes ridge regression. The closed form solution is:\ndef update_user(u_idx, R_train, V, mask_train, lambda_reg):\n    \"\"\"\n    Update single user embedding using closed form solution.\n    \"\"\"\n    rated_mask = mask_train[u_idx] &gt; 0\n    \n    V_rated = V[rated_mask]\n    r_u = R_train[u_idx, rated_mask]\n    \n    k = V.shape[1]\n    A = V_rated.T @ V_rated + lambda_reg * np.eye(k)\n    b = V_rated.T @ r_u\n    \n    return np.linalg.solve(A, b)\nThe term lambda_reg * np.eye(k) is the regularisation. It adds a small value to the diagonal of the matrix we invert. This does two things. First, it shrinks the solution towards zero, preventing overfitting. Second, it guarantees the matrix is invertible even if V_rated does not have full rank."
+  },
+  {
+    "objectID": "projects/recommender-system/02-als-algorithm.html#the-item-update",
+    "href": "projects/recommender-system/02-als-algorithm.html#the-item-update",
+    "title": "The ALS Algorithm",
+    "section": "The Item Update",
+    "text": "The Item Update\nThe item update is symmetric. When U is fixed, each item embedding can be optimised independently by looking at which users rated that item.\ndef update_item(i_idx, R_train, U, mask_train, lambda_reg):\n    \"\"\"\n    Update single item embedding using closed form solution.\n    \"\"\"\n    rated_mask = mask_train[:, i_idx] &gt; 0\n    \n    U_rated = U[rated_mask]\n    r_i = R_train[rated_mask, i_idx]\n    \n    k = U.shape[1]\n    A = U_rated.T @ U_rated + lambda_reg * np.eye(k)\n    b = U_rated.T @ r_i\n    \n    return np.linalg.solve(A, b)"
+  },
+  {
+    "objectID": "projects/recommender-system/02-als-algorithm.html#initialisation",
+    "href": "projects/recommender-system/02-als-algorithm.html#initialisation",
+    "title": "The ALS Algorithm",
+    "section": "Initialisation",
+    "text": "Initialisation\nBefore we can start alternating, we need initial values for U and V. Random initialisation works, but the scale matters. Large values cause exploding gradients in the first iterations. Zeros give no signal to learn from.\nSmall random values centred at zero are standard.\nk = 10\nlambda_reg = 0.1\n\nnp.random.seed(42)\nU = np.random.normal(0, 0.1, size=(n_users, k))\nV = np.random.normal(0, 0.1, size=(n_items, k))"
+  },
+  {
+    "objectID": "projects/recommender-system/02-als-algorithm.html#verifying-it-works",
+    "href": "projects/recommender-system/02-als-algorithm.html#verifying-it-works",
+    "title": "The ALS Algorithm",
+    "section": "Verifying It Works",
+    "text": "Verifying It Works\nA simple sanity check is to update one user and verify the loss decreases.\ninitial_loss = compute_loss(R_train, U, V, mask_train, lambda_reg)\n\nU[0] = update_user(0, R_train, V, mask_train, lambda_reg)\n\nloss_after = compute_loss(R_train, U, V, mask_train, lambda_reg)\n\nprint(f\"Loss before: {initial_loss:,.0f}\")\nprint(f\"Loss after:  {loss_after:,.0f}\")\nprint(f\"Decreased:   {loss_after &lt; initial_loss}\")\nIf the loss decreased, the maths is correct. Each individual update is guaranteed to reduce or maintain the loss because we are finding the optimal solution for that user given fixed items."
+  },
+  {
+    "objectID": "projects/recommender-system/02-als-algorithm.html#the-insight",
+    "href": "projects/recommender-system/02-als-algorithm.html#the-insight",
+    "title": "The ALS Algorithm",
+    "section": "The Insight",
+    "text": "The Insight\nALS is ridge regression in disguise. By fixing one set of factors, the non convex joint optimisation becomes a series of convex subproblems. Each subproblem has a closed form solution. No learning rates, no momentum, no gradient clipping.\nThis elegance has practical implications. ALS is embarrassingly parallel. Each user update is independent of the others. Each item update is independent of the others. On a cluster, you can update all users simultaneously, then all items simultaneously.\nNext: Training and Evaluation →"
+  },
+  {
+    "objectID": "projects/recommender-system/01-data-foundations.html",
+    "href": "projects/recommender-system/01-data-foundations.html",
+    "title": "Data and Foundations",
+    "section": "",
+    "text": "The first step in building any recommender system is understanding the data structure you are working with. MovieLens 100K contains 100,000 ratings from 943 users across 1,682 films. Each rating is a number from 1 to 5, representing how much a user liked a particular film."
+  },
+  {
+    "objectID": "projects/recommender-system/01-data-foundations.html#loading-the-data",
+    "href": "projects/recommender-system/01-data-foundations.html#loading-the-data",
+    "title": "Data and Foundations",
+    "section": "Loading the Data",
+    "text": "Loading the Data\nThe dataset comes as a tab separated file with four columns: user ID, item ID, rating, and timestamp. Loading it into pandas is straightforward.\nimport pandas as pd\nimport numpy as np\n\ndata_path = 'ml-100k/u.data'\ndf = pd.read_csv(\n    data_path, \n    sep=\"\\t\", \n    names=[\"user_id\", \"item_id\", \"rating\", \"timestamp\"]\n)\n\nn_users = df.user_id.nunique()\nn_items = df.item_id.nunique()\nn_ratings = len(df)\n\nprint(f\"Users: {n_users}\")\nprint(f\"Items: {n_items}\")\nprint(f\"Ratings: {n_ratings}\")\nThis gives us 943 users, 1,682 items, and 100,000 ratings. But the interesting number is what we do not have."
+  },
+  {
+    "objectID": "projects/recommender-system/01-data-foundations.html#sparsity",
+    "href": "projects/recommender-system/01-data-foundations.html#sparsity",
+    "title": "Data and Foundations",
+    "section": "Sparsity",
+    "text": "Sparsity\nIf every user rated every film, we would have 943 times 1,682 ratings, which is about 1.58 million. We have 100,000. That means 93.7% of the matrix is empty.\nsparsity = 1 - (n_ratings / (n_users * n_items))\nprint(f\"Sparsity: {sparsity:.1%}\")\nThis sparsity is not a bug. It is reality. No one watches everything. Netflix users interact with a tiny fraction of the catalogue. Amazon shoppers buy an even tinier fraction of available products. The challenge of recommendation is learning patterns from the small set of observed interactions to predict the vast majority of missing ones."
+  },
+  {
+    "objectID": "projects/recommender-system/01-data-foundations.html#the-rating-matrix",
+    "href": "projects/recommender-system/01-data-foundations.html#the-rating-matrix",
+    "title": "Data and Foundations",
+    "section": "The Rating Matrix",
+    "text": "The Rating Matrix\nWe represent the data as a matrix R where rows are users and columns are items. Entry R[u,i] is the rating user u gave to item i, or zero if they have not rated it.\nR = np.zeros((n_users, n_items))\n\nfor row in df.itertuples():\n    R[row.user_id - 1, row.item_id - 1] = row.rating\n\nprint(f\"Matrix shape: {R.shape}\")\nprint(f\"Non-zero entries: {(R &gt; 0).sum()}\")\nWe also need a mask matrix that tracks which entries actually contain ratings. This becomes critical for the loss function later. We only want to compute errors on observed ratings, not on the zeros.\nmask = (R &gt; 0).astype(float)"
+  },
+  {
+    "objectID": "projects/recommender-system/01-data-foundations.html#why-train-test-splits-are-different",
+    "href": "projects/recommender-system/01-data-foundations.html#why-train-test-splits-are-different",
+    "title": "Data and Foundations",
+    "section": "Why Train Test Splits Are Different",
+    "text": "Why Train Test Splits Are Different\nStandard machine learning splits data randomly into train and test sets. This does not work for recommender systems because we need to preserve the user structure.\nConsider user 42 who has rated 100 films. If we do a random split, some of those ratings go to train and some go to test. But when we evaluate, we want to simulate the real scenario: given what we know about user 42 from their training ratings, can we predict their held out test ratings?\nThe correct approach is to split each user’s ratings individually. For every user, we take 80% of their ratings for training and hold out 20% for testing.\nfrom sklearn.model_selection import train_test_split\n\ntrain_data = []\ntest_data = []\n\nfor user_id in df.user_id.unique():\n    user_ratings = df[df.user_id == user_id]\n    \n    if len(user_ratings) &gt;= 5:\n        train, test = train_test_split(\n            user_ratings, \n            test_size=0.2, \n            random_state=42\n        )\n        train_data.append(train)\n        test_data.append(test)\n    else:\n        train_data.append(user_ratings)\n\ntrain_df = pd.concat(train_data)\ntest_df = pd.concat(test_data)\n\nprint(f\"Train ratings: {len(train_df)}\")\nprint(f\"Test ratings: {len(test_df)}\")\nNow we build separate rating matrices for train and test.\nR_train = np.zeros((n_users, n_items))\nfor row in train_df.itertuples():\n    R_train[row.user_id - 1, row.item_id - 1] = row.rating\n\nR_test = np.zeros((n_users, n_items))\nfor row in test_df.itertuples():\n    R_test[row.user_id - 1, row.item_id - 1] = row.rating\n\nmask_train = (R_train &gt; 0).astype(float)\nmask_test = (R_test &gt; 0).astype(float)"
+  },
+  {
+    "objectID": "projects/recommender-system/01-data-foundations.html#the-goal",
+    "href": "projects/recommender-system/01-data-foundations.html#the-goal",
+    "title": "Data and Foundations",
+    "section": "The Goal",
+    "text": "The Goal\nThe matrix R is mostly zeros. Matrix factorisation assumes there is a low rank structure hidden in the data. We decompose R into two smaller matrices: U of shape (users, k) and V of shape (items, k), where k is much smaller than either dimension.\nThe product U times V transpose gives us a dense matrix of predicted ratings. The observed entries in R are training signal. The missing entries are predictions.\nThis is the foundation. Next we derive the ALS algorithm that learns U and V.\nNext: The ALS Algorithm →"
+  },
+  {
+    "objectID": "projects/recommender-system/05-implicit-feedback.html",
+    "href": "projects/recommender-system/05-implicit-feedback.html",
+    "title": "Implicit Feedback",
+    "section": "",
+    "text": "Most real world recommendation data is implicit. Netflix knows what you watched, not whether you enjoyed it. Amazon knows what you bought, not whether you would buy it again. Spotify knows what you played, not whether you skipped after ten seconds.\nExplicit ratings are rare. Asking users to rate every interaction creates friction. Most people do not bother. The systems that work at scale learn from implicit signals: clicks, views, purchases, time spent."
+  },
+  {
+    "objectID": "projects/recommender-system/05-implicit-feedback.html#the-problem-with-implicit-data",
+    "href": "projects/recommender-system/05-implicit-feedback.html#the-problem-with-implicit-data",
+    "title": "Implicit Feedback",
+    "section": "The Problem with Implicit Data",
+    "text": "The Problem with Implicit Data\nWith explicit feedback, we know what users liked and what they disliked. A 5 star rating is strong positive signal. A 1 star rating is strong negative signal.\nWith implicit feedback, we only observe positive interactions. A click tells us the user was interested. But what does no click mean? Did they see the item and ignore it? Did they never see it? Are they saving it for later?\nThe absence of interaction is ambiguous. It might indicate dislike, but it might just indicate lack of exposure."
+  },
+  {
+    "objectID": "projects/recommender-system/05-implicit-feedback.html#converting-to-binary",
+    "href": "projects/recommender-system/05-implicit-feedback.html#converting-to-binary",
+    "title": "Implicit Feedback",
+    "section": "Converting to Binary",
+    "text": "Converting to Binary\nThe first step is converting our rating matrix to binary preferences. Any rating becomes a 1, indicating interaction. Missing entries remain 0.\nR_implicit = np.zeros((n_users, n_items))\nfor row in df.itertuples():\n    R_implicit[row.user_id - 1, row.item_id - 1] = row.rating\n\nP = (R_implicit &gt; 0).astype(float)\n\nprint(f\"Interactions (P=1): {P.sum():,.0f}\")\nprint(f\"Non-interactions (P=0): {(P == 0).sum():,.0f}\")\nP is the preference matrix. We are now predicting binary outcomes: did the user interact with this item or not."
+  },
+  {
+    "objectID": "projects/recommender-system/05-implicit-feedback.html#confidence-weighting",
+    "href": "projects/recommender-system/05-implicit-feedback.html#confidence-weighting",
+    "title": "Implicit Feedback",
+    "section": "Confidence Weighting",
+    "text": "Confidence Weighting\nThe insight from the seminal paper by Hu, Koren, and Volinsky is to treat all observations, both ones and zeros, but weight them by confidence.\nFor interactions, confidence increases with the strength of the signal. If the raw data includes counts (user watched this film 5 times), more interactions mean higher confidence that they actually like it.\nFor non interactions, we have low but nonzero confidence. The user probably did not see the item, but there is still some weak signal that they did not seek it out.\nThe formula is simple:\ndef compute_confidence(R, alpha=40):\n    \"\"\"\n    Compute confidence matrix.\n    \n    c_ui = 1 + alpha * r_ui\n    \n    Non-interactions: c = 1 (low confidence)\n    Interactions: c = 1 + alpha * count (high confidence)\n    \"\"\"\n    return 1 + alpha * R\nWith alpha equals 40, a single interaction gets confidence 41. Five interactions get confidence 201. No interaction gets confidence 1."
+  },
+  {
+    "objectID": "projects/recommender-system/05-implicit-feedback.html#the-modified-loss-function",
+    "href": "projects/recommender-system/05-implicit-feedback.html#the-modified-loss-function",
+    "title": "Implicit Feedback",
+    "section": "The Modified Loss Function",
+    "text": "The Modified Loss Function\nExplicit ALS minimises squared error on observed ratings only. Implicit ALS minimises weighted squared error on all entries.\ndef compute_implicit_loss(P, C, U, V, lambda_reg):\n    \"\"\"\n    Compute weighted loss for implicit feedback.\n    \"\"\"\n    P_pred = U @ V.T\n    \n    errors = (P - P_pred) ** 2\n    weighted_errors = C * errors\n    reconstruction_loss = weighted_errors.sum()\n    \n    reg_loss = lambda_reg * (np.sum(U ** 2) + np.sum(V ** 2))\n    \n    return reconstruction_loss + reg_loss\nThe key difference is that we sum over all entries, including zeros, but multiply each error by its confidence. High confidence entries (where we have strong signal) contribute more to the loss. Low confidence entries (where we are guessing) contribute less."
+  },
+  {
+    "objectID": "projects/recommender-system/05-implicit-feedback.html#modified-update-rules",
+    "href": "projects/recommender-system/05-implicit-feedback.html#modified-update-rules",
+    "title": "Implicit Feedback",
+    "section": "Modified Update Rules",
+    "text": "Modified Update Rules\nThe update equations change because we now use all items, weighted by confidence.\ndef update_user_implicit(u_idx, P, C, V, lambda_reg):\n    \"\"\"\n    Update user embedding for implicit feedback.\n    \n    u_u = (V.T @ C_u @ V + λI)^(-1) @ V.T @ C_u @ p_u\n    \"\"\"\n    k = V.shape[1]\n    \n    c_u = C[u_idx]\n    p_u = P[u_idx]\n    \n    VtCuV = V.T @ (c_u[:, np.newaxis] * V)\n    VtCup = V.T @ (c_u * p_u)\n    \n    A = VtCuV + lambda_reg * np.eye(k)\n    b = VtCup\n    \n    return np.linalg.solve(A, b)\nInstead of taking a subset of V for rated items, we use all items but weight by confidence. The diagonal matrix C_u (confidence for user u across all items) scales each item’s contribution."
+  },
+  {
+    "objectID": "projects/recommender-system/05-implicit-feedback.html#training",
+    "href": "projects/recommender-system/05-implicit-feedback.html#training",
+    "title": "Implicit Feedback",
+    "section": "Training",
+    "text": "Training\nThe training loop has the same structure as explicit ALS.\ndef train_implicit_als(P, C, k, lambda_reg, n_epochs, verbose=True):\n    n_users, n_items = P.shape\n    \n    np.random.seed(42)\n    U = np.random.normal(0, 0.1, (n_users, k))\n    V = np.random.normal(0, 0.1, (n_items, k))\n    \n    loss_history = []\n    \n    for epoch in range(n_epochs):\n        for u_idx in range(n_users):\n            U[u_idx] = update_user_implicit(u_idx, P, C, V, lambda_reg)\n        \n        for i_idx in range(n_items):\n            V[i_idx] = update_item_implicit(i_idx, P, C, U, lambda_reg)\n        \n        loss = compute_implicit_loss(P, C, U, V, lambda_reg)\n        loss_history.append(loss)\n        \n        if verbose:\n            print(f\"Epoch {epoch+1:2d} | Loss: {loss:,.0f}\")\n    \n    return U, V, loss_history"
+  },
+  {
+    "objectID": "projects/recommender-system/05-implicit-feedback.html#evaluation",
+    "href": "projects/recommender-system/05-implicit-feedback.html#evaluation",
+    "title": "Implicit Feedback",
+    "section": "Evaluation",
+    "text": "Evaluation\nFor implicit feedback, hit rate is the natural metric because relevance is binary. NDCG still works but collapses to a simpler form when all relevant items have the same relevance grade.\nalpha = 40\nC = compute_confidence(R_implicit, alpha)\n\nU_imp, V_imp, _ = train_implicit_als(\n    P, C,\n    k=10,\n    lambda_reg=0.1,\n    n_epochs=20\n)\n\nfor k in [5, 10, 20]:\n    hr = hit_rate_at_k(U_imp, V_imp, P, P_test, k=k)\n    print(f\"K={k:2d} | Hit Rate: {hr:.4f}\")"
+  },
+  {
+    "objectID": "projects/recommender-system/05-implicit-feedback.html#alpha-matters",
+    "href": "projects/recommender-system/05-implicit-feedback.html#alpha-matters",
+    "title": "Implicit Feedback",
+    "section": "Alpha Matters",
+    "text": "Alpha Matters\nThe alpha parameter controls how much we trust interactions relative to non interactions. Higher alpha means more weight on observed interactions.\nOn MovieLens converted to implicit, lower alpha actually works better:\n\n\n\nAlpha\nHit Rate at 10\n\n\n\n\n1\n0.94\n\n\n10\n0.91\n\n\n40\n0.74\n\n\n100\n0.51\n\n\n200\n0.37\n\n\n\nThis is counterintuitive. The reason is that MovieLens is explicit data converted to implicit. A user who rated 50 films did not “reject” the other 1632. They simply have not seen them. With high alpha, we are telling the model to be very confident that non interactions mean dislike. That is wrong for this data.\nOn true implicit data like click streams, higher alpha often works better because the user was exposed to many items and chose not to interact with most of them. The non click carries more negative signal.\nThe lesson is that alpha is dataset dependent. Always tune it.\nNext: Optimisation and Tuning →"
+  },
+  {
+    "objectID": "projects/recommender-system/03-training-evaluation.html",
+    "href": "projects/recommender-system/03-training-evaluation.html",
+    "title": "Training and Evaluation",
+    "section": "",
+    "text": "With the update equations in place, the full training loop is straightforward. One epoch means updating all users, then updating all items. We repeat for a fixed number of epochs and track the loss at each step."
+  },
+  {
+    "objectID": "projects/recommender-system/03-training-evaluation.html#the-training-loop",
+    "href": "projects/recommender-system/03-training-evaluation.html#the-training-loop",
+    "title": "Training and Evaluation",
+    "section": "The Training Loop",
+    "text": "The Training Loop\ndef train_als(R_train, mask_train, k, lambda_reg, n_epochs, verbose=True):\n    \"\"\"\n    Train ALS model.\n    \n    Returns:\n        U: User factors\n        V: Item factors\n        loss_history: Loss at each epoch\n    \"\"\"\n    n_users, n_items = R_train.shape\n    \n    np.random.seed(42)\n    U = np.random.normal(0, 0.1, (n_users, k))\n    V = np.random.normal(0, 0.1, (n_items, k))\n    \n    loss_history = []\n    \n    for epoch in range(n_epochs):\n        for u_idx in range(n_users):\n            U[u_idx] = update_user(u_idx, R_train, V, mask_train, lambda_reg)\n        \n        for i_idx in range(n_items):\n            V[i_idx] = update_item(i_idx, R_train, U, mask_train, lambda_reg)\n        \n        loss = compute_loss(R_train, U, V, mask_train, lambda_reg)\n        loss_history.append(loss)\n        \n        if verbose:\n            print(f\"Epoch {epoch+1:2d} | Loss: {loss:,.0f}\")\n    \n    return U, V, loss_history\nTraining for 20 epochs gives a characteristic curve. The loss drops sharply in the first few epochs, then flattens as we approach convergence.\nU, V, loss_history = train_als(\n    R_train, mask_train,\n    k=10,\n    lambda_reg=0.1,\n    n_epochs=20\n)\nThe shape tells us something important. Most of the learning happens early. Those first five epochs take you from random embeddings to something reasonable. The next fifteen epochs refine the solution but deliver diminishing returns. This is why early stopping matters in practice. The compute cost of additional epochs often is not worth the marginal improvement."
+  },
+  {
+    "objectID": "projects/recommender-system/03-training-evaluation.html#rmse",
+    "href": "projects/recommender-system/03-training-evaluation.html#rmse",
+    "title": "Training and Evaluation",
+    "section": "RMSE",
+    "text": "RMSE\nLoss is useful for monitoring convergence but it includes regularisation and depends on the scale of your data. RMSE gives a more interpretable number: the average prediction error in rating units.\ndef compute_rmse(R, U, V, mask):\n    \"\"\"\n    Compute RMSE on observed ratings only.\n    \"\"\"\n    R_pred = U @ V.T\n    errors = (R - R_pred) ** 2\n    mse = (mask * errors).sum() / mask.sum()\n    return np.sqrt(mse)\n\ntrain_rmse = compute_rmse(R_train, U, V, mask_train)\ntest_rmse = compute_rmse(R_test, U, V, mask_test)\n\nprint(f\"Train RMSE: {train_rmse:.4f}\")\nprint(f\"Test RMSE:  {test_rmse:.4f}\")\nWith lambda set to 0.1, I got a train RMSE of 0.65 and a test RMSE of 1.22. The gap is a red flag. The model is memorising training data rather than learning generalisable patterns."
+  },
+  {
+    "objectID": "projects/recommender-system/03-training-evaluation.html#the-global-mean-baseline",
+    "href": "projects/recommender-system/03-training-evaluation.html#the-global-mean-baseline",
+    "title": "Training and Evaluation",
+    "section": "The Global Mean Baseline",
+    "text": "The Global Mean Baseline\nIs 1.22 good or bad? We need a baseline to compare against. The simplest baseline predicts the global mean rating for every user and every item.\nglobal_mean = R_train[mask_train &gt; 0].mean()\nprint(f\"Global mean: {global_mean:.2f}\")\n\nbaseline_errors = (R_test - global_mean) ** 2\nbaseline_rmse = np.sqrt((mask_test * baseline_errors).sum() / mask_test.sum())\n\nprint(f\"Baseline RMSE: {baseline_rmse:.4f}\")\nprint(f\"ALS RMSE:      {test_rmse:.4f}\")\nThe global mean is about 3.53 and its RMSE on the test set is 1.12. Our ALS model with weak regularisation actually performs worse than predicting the same number for everyone. That is overfitting in action."
+  },
+  {
+    "objectID": "projects/recommender-system/03-training-evaluation.html#hyperparameter-tuning",
+    "href": "projects/recommender-system/03-training-evaluation.html#hyperparameter-tuning",
+    "title": "Training and Evaluation",
+    "section": "Hyperparameter Tuning",
+    "text": "Hyperparameter Tuning\nThe fix is stronger regularisation. We run a sweep over lambda values and track both train and test RMSE.\nfor lam in [0.1, 1.0, 10.0, 50.0, 100.0]:\n    U, V, _ = train_als(\n        R_train, mask_train,\n        k=10,\n        lambda_reg=lam,\n        n_epochs=20,\n        verbose=False\n    )\n    train_rmse = compute_rmse(R_train, U, V, mask_train)\n    test_rmse = compute_rmse(R_test, U, V, mask_test)\n    print(f\"λ={lam:5.1f} | Train: {train_rmse:.4f} | Test: {test_rmse:.4f}\")\nThe results show the classic regularisation trade off.\n\n\n\nLambda\nTrain RMSE\nTest RMSE\n\n\n\n\n0.1\n0.65\n1.20\n\n\n1.0\n0.66\n1.04\n\n\n10.0\n0.81\n0.97\n\n\n50.0\n1.26\n1.29\n\n\n100.0\n1.64\n1.66\n\n\n\nAt lambda equals 0.1, the model fits training data tightly but fails on test. At lambda equals 10, train RMSE is higher but test RMSE is lowest. At lambda equals 100, regularisation is too strong and the model underfits both sets.\nThe sweet spot is lambda equals 10, giving a test RMSE of 0.97. This beats the global mean baseline by about 0.15 rating points. The model has learned something useful about user preferences."
+  },
+  {
+    "objectID": "projects/recommender-system/03-training-evaluation.html#what-rmse-means",
+    "href": "projects/recommender-system/03-training-evaluation.html#what-rmse-means",
+    "title": "Training and Evaluation",
+    "section": "What RMSE Means",
+    "text": "What RMSE Means\nAn RMSE of 0.97 means predictions are off by about one star on average. Ratings range from 1 to 5. The model is not perfect, but it captures meaningful signal.\nHowever, RMSE has a limitation. Users see recommendations as a ranked list, not as individual rating predictions. Whether you predict 4.2 or 4.5 matters less than whether the good films appear before the mediocre ones.\nNext: Ranking Metrics →"
+  },
+  {
+    "objectID": "projects/recommender-system/index.html",
+    "href": "projects/recommender-system/index.html",
+    "title": "Building Recommender Systems from Linear Algebra",
+    "section": "",
+    "text": "This series documents my implementation of collaborative filtering from first principles using the MovieLens 100K dataset. The goal is not to call library functions but to understand what happens inside them well enough to make production decisions when these systems need to scale."
+  },
+  {
+    "objectID": "projects/recommender-system/index.html#the-series",
+    "href": "projects/recommender-system/index.html#the-series",
+    "title": "Building Recommender Systems from Linear Algebra",
+    "section": "The Series",
+    "text": "The Series\n\nData and Foundations Understanding sparsity, building the rating matrix, and why train test splits work differently for recommender systems.\nThe ALS Algorithm Deriving the update equations as ridge regression, implementing the loss function, and understanding why fixing one matrix makes the other solvable.\nTraining and Evaluation Building the full training loop, plotting convergence, computing RMSE, and comparing against a global mean baseline.\nRanking Metrics Implementing hit rate and NDCG, understanding why RMSE is not enough, and generating top N recommendations.\nImplicit Feedback Converting explicit ratings to binary preferences, confidence weighting, and the modified loss function for implicit ALS.\nOptimisation and Tuning The matrix inversion trick, alpha tuning for implicit feedback, and computational efficiency."
+  },
+  {
+    "objectID": "projects/recommender-system/index.html#why-als",
+    "href": "projects/recommender-system/index.html#why-als",
+    "title": "Building Recommender Systems from Linear Algebra",
+    "section": "Why ALS?",
+    "text": "Why ALS?\nAlternating Least Squares is elegant because it transforms a non convex optimisation problem into a series of simple linear regressions. The objective function for matrix factorisation has two unknowns (user factors U and item factors V) that interact multiplicatively. Trying to solve for both simultaneously gives you a non convex landscape with saddle points and local minima.\nALS sidesteps this by fixing one matrix and solving for the other. When V is fixed, optimising U becomes a set of independent ridge regression problems, one per user. Each has a closed form solution. No gradient descent, no learning rate tuning, no momentum hyperparameters.\nThis is the foundation for understanding why more complex methods work. Neural collaborative filtering, two tower models, and modern retrieval systems all build on matrix factorisation intuitions."
+  },
+  {
+    "objectID": "projects/recommender-system/index.html#the-dataset",
+    "href": "projects/recommender-system/index.html#the-dataset",
+    "title": "Building Recommender Systems from Linear Algebra",
+    "section": "The Dataset",
+    "text": "The Dataset\nMovieLens 100K contains 100,000 ratings from 943 users across 1,682 films. The sparsity is 93.7%, which means the average user has rated only about 6% of available films. This is typical. No one watches everything. The challenge is learning patterns from the observed 6% to predict the missing 94%."
+  },
+  {
+    "objectID": "projects/recommender-system/index.html#results-summary",
+    "href": "projects/recommender-system/index.html#results-summary",
+    "title": "Building Recommender Systems from Linear Algebra",
+    "section": "Results Summary",
+    "text": "Results Summary\n\n\n\nMetric\nValue\n\n\n\n\nTest RMSE\n0.97\n\n\nHit Rate at 10\n0.65\n\n\nNDCG at 10\n0.18\n\n\nOptimal lambda\n10.0\n\n\n\nThe model beats the global mean baseline (RMSE 1.12) by 0.15 stars. Hit rate of 0.65 means that 65% of users get at least one relevant item in their top 10 recommendations. Compare this to random selection, which would give roughly 5 to 10%."
+  },
+  {
+    "objectID": "projects/recommender-system/index.html#code",
+    "href": "projects/recommender-system/index.html#code",
+    "title": "Building Recommender Systems from Linear Algebra",
+    "section": "Code",
+    "text": "Code\nFull implementation available on GitHub."
+  },
+  {
+    "objectID": "projects/recommender-system/06-optimisation-tuning.html",
+    "href": "projects/recommender-system/06-optimisation-tuning.html",
+    "title": "Optimisation and Tuning",
+    "section": "",
+    "text": "The naive implementation of implicit ALS has a problem. For each user update, we compute V transpose times C_u times V, which involves a dense diagonal matrix of size (items, items). With 1682 items, that is manageable. With millions of items, it becomes prohibitive."
+  },
+  {
+    "objectID": "projects/recommender-system/06-optimisation-tuning.html#the-computational-trick",
+    "href": "projects/recommender-system/06-optimisation-tuning.html#the-computational-trick",
+    "title": "Optimisation and Tuning",
+    "section": "The Computational Trick",
+    "text": "The Computational Trick\nThe key insight is that we can precompute V transpose times V once per epoch, then apply a correction for each user.\nThe correction comes from recognising that C_u is close to the identity. Most entries are 1 (non interactions have confidence 1). Only the items the user interacted with have confidence greater than 1.\ndef train_als_optimised(P, C, k, lambda_reg, n_epochs, verbose=True):\n    n_users, n_items = P.shape\n    \n    np.random.seed(42)\n    U = np.random.normal(0, 0.1, (n_users, k))\n    V = np.random.normal(0, 0.1, (n_items, k))\n    \n    loss_history = []\n    \n    for epoch in range(n_epochs):\n        VtV = V.T @ V\n        \n        for u_idx in range(n_users):\n            p_u = P[u_idx]\n            c_u = C[u_idx]\n            \n            interacted = np.where(p_u &gt; 0)[0]\n            delta_c = c_u[interacted] - 1\n            \n            V_int = V[interacted]\n            correction = V_int.T @ (delta_c[:, np.newaxis] * V_int)\n            \n            A = VtV + correction + lambda_reg * np.eye(k)\n            b = V.T @ (c_u * p_u)\n            \n            U[u_idx] = np.linalg.solve(A, b)\n        \n        UtU = U.T @ U\n        \n        for i_idx in range(n_items):\n            p_i = P[:, i_idx]\n            c_i = C[:, i_idx]\n            \n            interacted = np.where(p_i &gt; 0)[0]\n            delta_c = c_i[interacted] - 1\n            \n            U_int = U[interacted]\n            correction = U_int.T @ (delta_c[:, np.newaxis] * U_int)\n            \n            A = UtU + correction + lambda_reg * np.eye(k)\n            b = U.T @ (c_i * p_i)\n            \n            V[i_idx] = np.linalg.solve(A, b)\n        \n        loss = compute_implicit_loss(P, C, U, V, lambda_reg)\n        loss_history.append(loss)\n        \n        if verbose:\n            print(f\"Epoch {epoch+1:2d} | Loss: {loss:,.0f}\")\n    \n    return U, V, loss_history\nThe complexity drops from O(items squared) per user to O(interactions squared) per user. Since interactions are sparse, this is a major improvement."
+  },
+  {
+    "objectID": "projects/recommender-system/06-optimisation-tuning.html#what-makes-a-good-k",
+    "href": "projects/recommender-system/06-optimisation-tuning.html#what-makes-a-good-k",
+    "title": "Optimisation and Tuning",
+    "section": "What Makes a Good k",
+    "text": "What Makes a Good k\nThe latent dimension k controls model capacity. Too small and the model cannot capture the complexity of user preferences. Too large and it overfits.\nFor MovieLens 100K, k between 10 and 50 works well. Larger datasets can support larger k. The rule of thumb is that k should be much smaller than both the number of users and the number of items.\nfor k_val in [5, 10, 20, 50, 100]:\n    U, V, _ = train_als(\n        R_train, mask_train,\n        k=k_val,\n        lambda_reg=10.0,\n        n_epochs=20,\n        verbose=False\n    )\n    test_rmse = compute_rmse(R_test, U, V, mask_test)\n    print(f\"k={k_val:3d} | Test RMSE: {test_rmse:.4f}\")\nOn MovieLens, test RMSE improves from k equals 5 to k equals 20, then plateaus or slightly degrades beyond k equals 50. The sweet spot depends on the dataset and available regularisation."
+  },
+  {
+    "objectID": "projects/recommender-system/06-optimisation-tuning.html#convergence-criteria",
+    "href": "projects/recommender-system/06-optimisation-tuning.html#convergence-criteria",
+    "title": "Optimisation and Tuning",
+    "section": "Convergence Criteria",
+    "text": "Convergence Criteria\nRunning a fixed number of epochs is simple but wasteful. The loss curve flattens long before 20 epochs. A smarter approach is to stop when improvement falls below a threshold.\ndef train_als_early_stop(R_train, mask_train, k, lambda_reg, max_epochs, tol=1e-4):\n    n_users, n_items = R_train.shape\n    \n    np.random.seed(42)\n    U = np.random.normal(0, 0.1, (n_users, k))\n    V = np.random.normal(0, 0.1, (n_items, k))\n    \n    prev_loss = float('inf')\n    \n    for epoch in range(max_epochs):\n        for u_idx in range(n_users):\n            U[u_idx] = update_user(u_idx, R_train, V, mask_train, lambda_reg)\n        \n        for i_idx in range(n_items):\n            V[i_idx] = update_item(i_idx, R_train, U, mask_train, lambda_reg)\n        \n        loss = compute_loss(R_train, U, V, mask_train, lambda_reg)\n        \n        relative_improvement = (prev_loss - loss) / prev_loss\n        \n        if relative_improvement &lt; tol:\n            print(f\"Converged at epoch {epoch+1}\")\n            break\n        \n        prev_loss = loss\n    \n    return U, V"
+  },
+  {
+    "objectID": "projects/recommender-system/06-optimisation-tuning.html#summary-of-hyperparameters",
+    "href": "projects/recommender-system/06-optimisation-tuning.html#summary-of-hyperparameters",
+    "title": "Optimisation and Tuning",
+    "section": "Summary of Hyperparameters",
+    "text": "Summary of Hyperparameters\n\n\n\nParameter\nExplicit ALS\nImplicit ALS\nNotes\n\n\n\n\nk\n10 to 50\n10 to 50\nStart small, increase if underfitting\n\n\nlambda\n1 to 100\n0.01 to 1\nTune on validation set\n\n\nalpha\nN/A\n1 to 200\nDataset dependent\n\n\nepochs\n10 to 30\n10 to 30\nUse early stopping\n\n\n\nThe implicit model typically needs weaker regularisation than explicit because the confidence weighting already provides some smoothing."
+  },
+  {
+    "objectID": "projects/recommender-system/06-optimisation-tuning.html#what-i-learned",
+    "href": "projects/recommender-system/06-optimisation-tuning.html#what-i-learned",
+    "title": "Optimisation and Tuning",
+    "section": "What I Learned",
+    "text": "What I Learned\nBuilding ALS from scratch clarified several things that library documentation glosses over.\nFirst, the algorithm is ridge regression in disguise. Once you see it, the update equations are obvious. This demystifies what seemed like complicated linear algebra.\nSecond, implicit feedback requires thinking about what the absence of data means. The confidence weighting is not a hack; it is a principled way to handle ambiguous negatives.\nThird, computational tricks matter at scale. The naive implementation is fine for MovieLens but would not work on production data. The precompute plus correction approach is what real systems use.\nFourth, hyperparameters interact. You cannot tune k independently of lambda. A larger model needs stronger regularisation. The optimal alpha depends on how your implicit signals were generated."
+  },
+  {
+    "objectID": "projects/recommender-system/06-optimisation-tuning.html#next-steps",
+    "href": "projects/recommender-system/06-optimisation-tuning.html#next-steps",
+    "title": "Optimisation and Tuning",
+    "section": "Next Steps",
+    "text": "Next Steps\nThe ALS implementation is complete. The natural extensions are SGD based matrix factorisation, which trades closed form solutions for better scalability, and neural collaborative filtering, which replaces the dot product with a learned function.\nBut the foundation is here. Understanding ALS deeply makes the more complex methods easier to grasp because they are all variations on the same theme: learn low dimensional representations that predict interactions."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Noor Rashid",
     "section": "",
-    "text": "I build production-grade machine learning systems that solve real business problems. This portfolio showcases end-to-end ML projects covering the full engineering lifecycle: from problem framing and data pipelines through model development, deployment, and monitoring.\nCore Expertise: Deep Learning, MLOps, Feature Engineering, Model Deployment, A/B Testing, Cloud Architecture (AWS/GCP)\nTech Stack: Python, PyTorch, SQL, Docker, Kubernetes, FastAPI, MLflow, Airflow, Spark"
+    "text": "I build production ML systems from first principles. My approach is to implement algorithms from scratch, understand the mathematics deeply, then make informed engineering decisions when systems need to scale.\nCurrently a Senior Data Scientist at WSET, where I’ve built an automated A/B testing platform generating high six figure revenue and an agentic RAG system with purchase based recommendations using Redis and Pinecone."
   },
   {
-    "objectID": "index.html#welcome",
-    "href": "index.html#welcome",
+    "objectID": "index.html#projects",
+    "href": "index.html#projects",
     "title": "Noor Rashid",
-    "section": "",
-    "text": "I build production-grade machine learning systems that solve real business problems. This portfolio showcases end-to-end ML projects covering the full engineering lifecycle: from problem framing and data pipelines through model development, deployment, and monitoring.\nCore Expertise: Deep Learning, MLOps, Feature Engineering, Model Deployment, A/B Testing, Cloud Architecture (AWS/GCP)\nTech Stack: Python, PyTorch, SQL, Docker, Kubernetes, FastAPI, MLflow, Airflow, Spark"
-  },
-  {
-    "objectID": "index.html#featured-projects",
-    "href": "index.html#featured-projects",
-    "title": "Noor Rashid",
-    "section": "Featured Projects",
-    "text": "Featured Projects\n\nPortfolio Under Construction\nI’m currently building production-quality ML projects to showcase here. Each project will demonstrate end-to-end capabilities from data engineering through deployment and monitoring.\nComing Soon: - Recommendation system with collaborative filtering at scale - Time-series forecasting with uncertainty quantification - NLP application with fine-tuned transformers\nCheck back soon or connect with me to discuss my work in progress."
-  },
-  {
-    "objectID": "index.html#about",
-    "href": "index.html#about",
-    "title": "Noor Rashid",
-    "section": "About",
-    "text": "About\nOxford-educated data scientist transitioning into ML Engineering leadership roles. Passionate about building robust, scalable ML systems and bridging the gap between research and production.\nCurrently: Building expertise in MLOps, distributed training, and real-time inference systems. Developing portfolio projects that demonstrate production-grade engineering practices.\nOpen to: Senior DS, MLE, and Lead roles at FAANG, high-growth startups, and quant firms."
+    "section": "Projects",
+    "text": "Projects\n\nBuilding Recommender Systems from Linear Algebra\nImplementing collaborative filtering with ALS on MovieLens 100K. This project covers matrix factorisation from first principles, deriving update equations as ridge regression, and building evaluation metrics including NDCG and hit rate. The goal is not to use library black boxes but to understand what happens under the hood well enough to make production decisions.\nRead the full series →"
   },
   {
     "objectID": "index.html#contact",
     "href": "index.html#contact",
     "title": "Noor Rashid",
     "section": "Contact",
-    "text": "Contact\nI’m open to discussing opportunities, technical collaborations, or connecting with fellow ML practitioners.\nGet in touch:\nGitHub | LinkedIn | Email\nResume available upon request"
+    "text": "Contact\nnooraaden@gmail.com · LinkedIn · GitHub"
   }
 ]
