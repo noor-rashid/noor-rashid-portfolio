@@ -219,6 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><a href="../../projects/recommender-system/04-ranking-metrics.html"><strong>Ranking Metrics</strong></a> Implementing hit rate and NDCG, understanding why RMSE is not enough, and generating top N recommendations.</p></li>
 <li><p><a href="../../projects/recommender-system/05-implicit-feedback.html"><strong>Implicit Feedback</strong></a> Converting explicit ratings to binary preferences, confidence weighting, and the modified loss function for implicit ALS.</p></li>
 <li><p><a href="../../projects/recommender-system/06-optimisation-tuning.html"><strong>Optimisation and Tuning</strong></a> The matrix inversion trick, alpha tuning for implicit feedback, and computational efficiency.</p></li>
+<li><p><a href="../../projects/recommender-system/07-sparse-parallel.html"><strong>Sparse Matrices and Parallel Computation</strong></a> CSR vs CSC formats, embarrassingly parallel updates, and the Gram matrix trick. Taking the implementation from working to production ready.</p></li>
 </ol>
 </section>
 <section id="why-als" class="level2">
@@ -748,32 +749,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span><span class="co">[</span><span class="ot">**Optimisation and Tuning**</span><span class="co">](06-optimisation-tuning.qmd)</span> The matrix inversion trick, alpha tuning for implicit feedback, and computational efficiency.</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why ALS?</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span><span class="co">[</span><span class="ot">**Sparse Matrices and Parallel Computation**</span><span class="co">](07-sparse-parallel.qmd)</span> CSR vs CSC formats, embarrassingly parallel updates, and the Gram matrix trick. Taking the implementation from working to production ready.</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Alternating Least Squares is elegant because it transforms a non convex optimisation problem into a series of simple linear regressions. The objective function for matrix factorisation has two unknowns (user factors U and item factors V) that interact multiplicatively. Trying to solve for both simultaneously gives you a non convex landscape with saddle points and local minima.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why ALS?</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>ALS sidesteps this by fixing one matrix and solving for the other. When V is fixed, optimising U becomes a set of independent ridge regression problems, one per user. Each has a closed form solution. No gradient descent, no learning rate tuning, no momentum hyperparameters.</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Alternating Least Squares is elegant because it transforms a non convex optimisation problem into a series of simple linear regressions. The objective function for matrix factorisation has two unknowns (user factors U and item factors V) that interact multiplicatively. Trying to solve for both simultaneously gives you a non convex landscape with saddle points and local minima.</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>This is the foundation for understanding why more complex methods work. Neural collaborative filtering, two tower models, and modern retrieval systems all build on matrix factorisation intuitions.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>ALS sidesteps this by fixing one matrix and solving for the other. When V is fixed, optimising U becomes a set of independent ridge regression problems, one per user. Each has a closed form solution. No gradient descent, no learning rate tuning, no momentum hyperparameters.</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Dataset</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>This is the foundation for understanding why more complex methods work. Neural collaborative filtering, two tower models, and modern retrieval systems all build on matrix factorisation intuitions.</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>MovieLens 100K contains 100,000 ratings from 943 users across 1,682 films. The sparsity is 93.7%, which means the average user has rated only about 6% of available films. This is typical. No one watches everything. The challenge is learning patterns from the observed 6% to predict the missing 94%.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Dataset</span></span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Results Summary</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>MovieLens 100K contains 100,000 ratings from 943 users across 1,682 films. The sparsity is 93.7%, which means the average user has rated only about 6% of available films. This is typical. No one watches everything. The challenge is learning patterns from the observed 6% to predict the missing 94%.</span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Metric <span class="pp">|</span> Value <span class="pp">|</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|-------|</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Test RMSE <span class="pp">|</span> 0.97 <span class="pp">|</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Hit Rate at 10 <span class="pp">|</span> 0.65 <span class="pp">|</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> NDCG at 10 <span class="pp">|</span> 0.18 <span class="pp">|</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Optimal lambda <span class="pp">|</span> 10.0 <span class="pp">|</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>The model beats the global mean baseline (RMSE 1.12) by 0.15 stars. Hit rate of 0.65 means that 65% of users get at least one relevant item in their top 10 recommendations. Compare this to random selection, which would give roughly 5 to 10%.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Results Summary</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Metric <span class="pp">|</span> Value <span class="pp">|</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------|-------|</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Test RMSE <span class="pp">|</span> 0.97 <span class="pp">|</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Hit Rate at 10 <span class="pp">|</span> 0.65 <span class="pp">|</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> NDCG at 10 <span class="pp">|</span> 0.18 <span class="pp">|</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Optimal lambda <span class="pp">|</span> 10.0 <span class="pp">|</span></span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Code</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>The model beats the global mean baseline (RMSE 1.12) by 0.15 stars. Hit rate of 0.65 means that 65% of users get at least one relevant item in their top 10 recommendations. Compare this to random selection, which would give roughly 5 to 10%.</span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>Full implementation available on <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/noor-rashid/recommender-systems)</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Code</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>Full implementation available on <span class="co">[</span><span class="ot">GitHub</span><span class="co">](https://github.com/noor-rashid/recommender-systems)</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
